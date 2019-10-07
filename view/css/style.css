@@ -1,0 +1,4 @@
+/* This container class will allow a table to scroll horizontally on smaller screens. */
+.hscroll {
+  overflow-x: auto; /* Horizontal */
+}

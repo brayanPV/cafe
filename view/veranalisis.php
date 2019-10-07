@@ -1,0 +1,81 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<h1>
+			Cafe
+			<small>Mostrar Analisis</small>
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+			<li class="active">Here</li>
+		</ol>
+	</section>
+
+	<!-- Main content -->
+	<section class="content container-fluid">
+
+		<!--------------------------
+        | Your Page Content Here |
+        -------------------------->
+		<div class="box">
+			<div class="box-header">
+				<h3 class="box-title">Tabla de todos los analisis</h3>
+			</div>
+			<!-- /.box-header -->
+			<div class="box-body">
+				<table id="example1" class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Cultivo</th>
+							<th>NombreCultivo</th>
+							<th>potasio</th>
+							<th>nitrogeno</th>
+							<th>fosforo</th>
+							<th>ph</th>
+							<th>FECHA</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach($this->model->Listar() as $r): ?>
+						<tr>
+							<td><?php echo $r->IDANALISIS; ?></td>
+							<td><?php echo $r->IDCULTIVO; ?></td>
+							<td><?php echo $r->NOMBRECULTIVO;?></td>
+							<td><?php echo $r->PROPIEDAD1; ?></td>
+							<td><?php echo $r->PROPIEDAD2; ?></td>
+							<td><?php echo $r->PROPIEDAD3; ?></td>
+							<td><?php echo $r->PROPIEDAD4; ?></td>
+							<td><?php echo $r->FECHA; ?></td>
+							
+							
+						</tr>
+						<?php endforeach; ?>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>ID</th>
+							<th>Cultivo</th>
+							<th>NombreCultivo</th>
+							<th>potasio</th>
+							<th>nitrogeno</th>
+							<th>fosforo</th>
+							<th>ph</th>
+							<th>FECHA</th>
+							
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+
+			
+			<!-- /.box-body -->
+		</div>
+
+	</section>
+	<!-- /.content -->
+
+</div>
+<!-- /.content-wrapper -->
