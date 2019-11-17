@@ -5,6 +5,7 @@ class Actividad
 	private $pdo;
     public $ID;
     public $nombre;
+    public $IDORGANIZACION;
 
 	public function __CONSTRUCT()
 	{
@@ -25,9 +26,15 @@ class Actividad
 	{
 		try
 		{
-			$result = array();
+			$IDORGANIZACION = $_SESSION['idorganizacion'];
+            $result = array();
 
-			$stm = $this->pdo->prepare("SELECT * FROM actividad");
+			$stm = $this->pdo->prepare("SELECT a.IDACTIVIDAD, a.NOMBRE FROM actividad a
+            INNER JOIN USUARIO U
+            INNER JOIN ORGANIZACION O
+            WHERE A.IDUSUARIO = U.IDUSUARIO
+            AND U.IDORGANIZACION = O.IDORGANIZACION
+            AND O.IDORGANIZACION = '$IDORGANIZACION'");
 			$stm->execute();
 
 			return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -93,13 +100,14 @@ class Actividad
 	{
 		try 
 		{
-		$sql = "INSERT INTO actividad (nombre) 
-		        VALUES (?)";
+		$sql = "INSERT INTO actividad (nombre,IDUSUARIO) 
+		        VALUES (?,?)";
 
 		$this->pdo->prepare($sql)
 		     ->execute(
 				array(
                     $data->nombre,
+                    $data->idusuario,
                     
                 )
 			);

@@ -49,6 +49,7 @@ class ActividadController{
         
         $alm->ID = $_REQUEST['ID'];
         $alm->nombre = $_REQUEST['nombre'];
+        $alm->idusuario= $_REQUEST['idusuario'];
         
         $alm->ID > 0 
             ? $this->model->Actualizar($alm)

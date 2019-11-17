@@ -27,7 +27,7 @@
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 						<tr>
-							<th>ID</th>
+							<th>ID ACTIVIDAD</th>
 							<th>Nombre</th>
 							<th>editar</th>
 							
@@ -46,7 +46,7 @@
 					</tbody>
 					<tfoot>
 						<tr>
-							<th>ID</th>
+							<th>ID ACTIVIDAD</th>
 							<th>Nombre</th>
 							<th>editar</th>
 							

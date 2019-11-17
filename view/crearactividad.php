@@ -30,6 +30,9 @@
 					<div class="form-group">
 						<label for="textInput">Nombre de la actividad</label>
 						<input type="text" name="nombre" id="textInput" class="form-control mb-4" placeholder="Ingrese nombre"    required>
+						<div>
+						    <input type="hidden" name="idusuario" value="<?php echo $_SESSION['idusuario'] ?>" />
+						</div>
 				</div>
 				<!-- /.box-body -->
 
