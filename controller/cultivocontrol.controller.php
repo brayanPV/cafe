@@ -51,6 +51,7 @@ class CultivoControlController{
         $alm->idcultivo = $_REQUEST['cultivo'];
         $alm->idcontrolcalidad = $_REQUEST['control'];
 		$alm->idtrabajador = $_REQUEST['trabajador'];
+        $alm->idusuario = $_REQUEST['idusuario'];
 
         $alm->ID > 0 
             ? $this->model->Actualizar($alm)

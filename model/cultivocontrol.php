@@ -7,6 +7,7 @@ class CultivoControl
     public $idcultivo;
     public $idcontrolcalidad;
     public $idtrabajador;
+    public $IDORGANIZACION;
 
 	public function __CONSTRUCT()
 	{
@@ -27,6 +28,7 @@ class CultivoControl
 	{
 		try
 		{
+            $IDORGANIZACION = $_SESSION['idorganizacion'];
 			$result = array();
 
 			$stm = $this->pdo->prepare("SELECT CC.IDCULTIVOCONTROL, C.IDCULTIVO, C.NOMBRE AS NOMBRECULTIVO, CAL.IDCONTROLCALIDAD, CAL.NOMBRE AS NOMBRECONTROL, T.IDTRABAJADOR, T.NOMBRE AS NOMBRETRABAJADOR, CC.FECHA
@@ -36,7 +38,12 @@ ON CC.IDCULTIVO = C.IDCULTIVO
 INNER JOIN CONTROLCALIDAD CAL
 ON CC.IDCONTROLCALIDAD = CAL.IDCONTROLCALIDAD
 INNER JOIN TRABAJADOR T
-ON CC.IDTRABAJADOR = T.IDTRABAJADOR");
+ON CC.IDTRABAJADOR = T.IDTRABAJADOR
+INNER JOIN USUARIO U
+ON CC.IDUSUARIO = U.IDUSUARIO
+INNER JOIN ORGANIZACION O
+ON U.IDORGANIZACION = O.IDORGANIZACION
+AND O.IDORGANIZACION = '$IDORGANIZACION'");
 			$stm->execute();
 
 			return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -51,9 +58,11 @@ ON CC.IDTRABAJADOR = T.IDTRABAJADOR");
 	{
 		try
 		{
+            $IDORGANIZACION = $_SESSION['idorganizacion'];
 			$result = array();
 
-			$stm = $this->pdo->prepare("SELECT * FROM cultivo");
+			$stm = $this->pdo->prepare("SELECT c.IDCULTIVO, c.NOMBRE FROM cultivo c
+            INNER JOIN USUARIO U INNER JOIN ORGANIZACION O WHERE C.IDUSUARIO = U.IDUSUARIO AND U.IDORGANIZACION = O.IDORGANIZACION AND O.IDORGANIZACION = '$IDORGANIZACION'");
 			$stm->execute();
 
 			return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -68,9 +77,15 @@ ON CC.IDTRABAJADOR = T.IDTRABAJADOR");
 	{
 		try
 		{
+            $IDORGANIZACION = $_SESSION['idorganizacion'];
 			$result = array();
 
-			$stm = $this->pdo->prepare("SELECT * FROM controlcalidad");
+			$stm = $this->pdo->prepare("SELECT CC.IDCONTROLCALIDAD, CC.NOMBRE FROM controlcalidad CC
+            INNER JOIN USUARIO U
+            ON CC.IDUSUARIO = U.IDUSUARIO
+            INNER JOIN ORGANIZACION O
+            ON U.IDORGANIZACION = O.IDORGANIZACION
+            AND O.IDORGANIZACION = '$IDORGANIZACION'");
 			$stm->execute();
 
 			return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -85,9 +100,15 @@ ON CC.IDTRABAJADOR = T.IDTRABAJADOR");
 	{
 		try
 		{
+            $IDORGANIZACION = $_SESSION['idorganizacion'];
 			$result = array();
-
-			$stm = $this->pdo->prepare("SELECT * FROM trabajador");
+            
+			$stm = $this->pdo->prepare("SELECT T.IDTRABAJADOR, T.NOMBRE FROM trabajador T
+            INNER JOIN USUARIO U
+            ON T.IDUSUARIO = U.IDUSUARIO
+            INNER JOIN ORGANIZACION O
+            ON U.IDORGANIZACION = O.IDORGANIZACION
+            AND O.IDORGANIZACION = '$IDORGANIZACION'");
 			$stm->execute();
 
 			return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -153,15 +174,16 @@ ON CC.IDTRABAJADOR = T.IDTRABAJADOR");
 	{
 		try 
 		{
-		$sql = "INSERT INTO cultivocontrol (idcultivo,idcontrolcalidad,idtrabajador) 
-		        VALUES (?, ?, ?)";
+		$sql = "INSERT INTO cultivocontrol (idcultivo,idcontrolcalidad,idtrabajador, IDUSUARIO) 
+		        VALUES (?, ?, ?, ?)";
 
 		$this->pdo->prepare($sql)
 		     ->execute(
 				array(
                     $data->idcultivo,
                     $data->idcontrolcalidad,
-					$data->idtrabajador
+					$data->idtrabajador,
+                    $data->idusuario
                 )
 			);
 		} catch (Exception $e) 

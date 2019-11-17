@@ -53,7 +53,9 @@
                			<?php endforeach; ?> 
                 	</select>
                 </div>
-					
+					<div>
+						    <input type="hidden" name="idusuario" value="<?php echo $_SESSION['idusuario'] ?>" />
+						</div>
 					
 				</div>
 				<!-- /.box-body -->
