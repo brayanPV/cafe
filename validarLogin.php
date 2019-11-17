@@ -16,11 +16,13 @@ foreach ($res as $item){
     $admin = $item["ADMIN"];
     $nombre = $item["NOMBRE"];
     $idusuario = $item["IDUSUARIO"];
+    $idorganizacion = $item["IDORGANIZACION"];
 
 }
 $_SESSION['admin']=$admin;
 $_SESSION['nombre']=$nombre;
-$_SESSION['idusuario']=$idusuario;    
+$_SESSION['idusuario']=$idusuario;
+$_SESSION['idorganizacion']=$idorganizacion;    
 header('Location: directioner.php');
 }
 else{

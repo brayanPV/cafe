@@ -54,6 +54,9 @@
 							<label for="textInput">PH</label>
 							<input type="number" name="propiedad4" id="textInput" class="form-control mb-4" placeholder="Ingrese propiedad 4 %"   required min="1" max="100" required>
 						</div>
+						<div>
+						    <input type="hidden" name="idusuario" value="<?php echo $_SESSION['idusuario'] ?>" />
+						</div>
 					</div>
 					
 					

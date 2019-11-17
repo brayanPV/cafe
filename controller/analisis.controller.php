@@ -52,6 +52,7 @@ class AnalisisController{
         $alm->PROPIEDAD2 = $_REQUEST['propiedad2'];
 		$alm->PROPIEDAD3 = $_REQUEST['propiedad3'];
 		$alm->PROPIEDAD4 = $_REQUEST['propiedad4'];
+        $alm->IDUSUARIO = $_REQUEST['idusuario'];
 
         $alm->ID > 0 
             ? $this->model->Actualizar($alm)
