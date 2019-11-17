@@ -31,6 +31,10 @@ class CultivoController{
 		require_once 'view/partials/header.php';
         require_once 'view/vercultivos.php';
         require_once 'view/partials/footer.php';
+        /*$alm = new Cultivo();
+        if(isset($_REQUEST['idusuario'])){
+            $alm = $this->model->Listar($_REQUEST['idusuario']);
+        }*/
 	}
 	
 	public function Editar(){
@@ -47,9 +51,10 @@ class CultivoController{
     public function Guardar(){
         $alm = new Cultivo();
         
-        $alm->ID = $_REQUEST['ID'];
+        $alm->ID = $_REQUEST['id'];
         $alm->nombre = $_REQUEST['nombre'];
         $alm->area = $_REQUEST['area'];
+        $alm->idusuario = $_REQUEST['idusuario'];
 
         $alm->ID > 0 
             ? $this->model->Actualizar($alm)

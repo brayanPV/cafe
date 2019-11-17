@@ -7,6 +7,7 @@ class Cultivo
     public $nombre;
     public $area;
     public $fecha;
+    public $idusuario;
 
 	public function __CONSTRUCT()
 	{
@@ -28,8 +29,13 @@ class Cultivo
 		try
 		{
 			$result = array();
-
-			$stm = $this->pdo->prepare("SELECT * FROM cultivo");
+            $idusuario = $_SESSION['idusuario'];
+			$stm = $this->pdo->prepare("SELECT C.IDCULTIVO, C.NOMBRE, C.AREA, C.FECHA FROM cultivo c
+            inner join usuario u
+            inner join organizacion o
+            where c.idusuario = '$idusuario' 
+            and c.idusuario = u.idusuario
+            and u.idorganizacion = o.idorganizacion");
 			$stm->execute();
 
 			return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -97,14 +103,15 @@ class Cultivo
 	{
 		try 
 		{
-		$sql = "INSERT INTO cultivo (nombre,area) 
-		        VALUES (?, ?)";
+		$sql = "INSERT INTO cultivo (nombre,area, idusuario) 
+		        VALUES (?, ?, ?)";
 
 		$this->pdo->prepare($sql)
 		     ->execute(
 				array(
                     $data->nombre,
-                    $data->area
+                    $data->area,
+                    $data->idusuario,
                 )
 			);
 		} catch (Exception $e) 

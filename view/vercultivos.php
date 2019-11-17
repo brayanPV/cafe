@@ -22,13 +22,14 @@
 			<div class="box-header">
 				<h3 class="box-title">Tabla de todos los cultivos</h3>
 			</div>
+			
 			<!-- /.box-header -->
 			<div class="box-body">
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 						<tr>
 							<th>ID Cultivo</th>
-							<th>Nombre</th>
+							<th>Nombre Cultivo</th>
 							<th>Area</th>
 							<th>fecha</th>
 							<th>editar</th>

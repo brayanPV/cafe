@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-06-2019 a las 08:33:01
--- Versión del servidor: 10.1.37-MariaDB
--- Versión de PHP: 7.2.12
+-- Tiempo de generación: 17-11-2019 a las 01:14:30
+-- Versión del servidor: 10.1.36-MariaDB
+-- Versión de PHP: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -30,17 +30,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `actividad` (
   `IDACTIVIDAD` int(11) NOT NULL,
-  `NOMBRE` varchar(20) DEFAULT NULL
+  `NOMBRE` varchar(20) DEFAULT NULL,
+  `FECHA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `IDUSUARIO` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `actividad`
---
-
-INSERT INTO `actividad` (`IDACTIVIDAD`, `NOMBRE`) VALUES
-(1, 'plantar coca'),
-(2, 'Regar cultivo '),
-(3, 'pegarlo');
 
 -- --------------------------------------------------------
 
@@ -55,19 +48,9 @@ CREATE TABLE `analisis` (
   `PROPIEDAD1` int(11) DEFAULT NULL,
   `PROPIEDAD2` int(11) DEFAULT NULL,
   `PROPIEDAD3` int(11) DEFAULT NULL,
-  `PROPIEDAD4` int(11) DEFAULT NULL
+  `PROPIEDAD4` int(11) DEFAULT NULL,
+  `IDUSUARIO` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `analisis`
---
-
-INSERT INTO `analisis` (`IDANALISIS`, `FECHA`, `IDCULTIVO`, `PROPIEDAD1`, `PROPIEDAD2`, `PROPIEDAD3`, `PROPIEDAD4`) VALUES
-(1, '2019-06-10 01:24:25', 2, 10, 10, 14, 15),
-(2, '2019-06-11 01:44:35', 6, NULL, NULL, NULL, NULL),
-(3, '2019-06-11 01:45:45', 5, 10, 10, 10, 10),
-(4, '2019-06-11 01:46:33', 11, 11, 11, 11, 11),
-(5, '2019-06-11 01:53:59', 12, 12, 16, 56, 1);
 
 -- --------------------------------------------------------
 
@@ -78,30 +61,9 @@ INSERT INTO `analisis` (`IDANALISIS`, `FECHA`, `IDCULTIVO`, `PROPIEDAD1`, `PROPI
 CREATE TABLE `controlcalidad` (
   `IDCONTROLCALIDAD` int(11) NOT NULL,
   `NOMBRE` varchar(20) DEFAULT NULL,
-  `IDTIPOC` int(11) NOT NULL
+  `IDTIPOC` int(11) NOT NULL,
+  `IDUSUARIO` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `controlcalidad`
---
-
-INSERT INTO `controlcalidad` (`IDCONTROLCALIDAD`, `NOMBRE`, `IDTIPOC`) VALUES
-(1, 'CULTURAL 1', 1),
-(2, 'BIOLOGICO', 1),
-(3, 'QUIMICO', 1),
-(4, 'QUIMICO', 2),
-(5, 'FERTILIZAR', 2),
-(6, 'PODAR', 2),
-(7, 'MANUAL', 3),
-(8, 'MECANICO', 3),
-(9, 'QUIMICO', 3),
-(10, 'nuevocontrolp', 1),
-(11, 'prueba xd', 2),
-(12, 'BIOLOGICO', 3),
-(13, 'CULTURAL editado', 1),
-(14, 'CULTURAL editado1', 1),
-(15, 'QUIMICO 15', 1),
-(16, 'AAAAAAAAAAAAA', 1);
 
 -- --------------------------------------------------------
 
@@ -113,25 +75,9 @@ CREATE TABLE `cultivo` (
   `IDCULTIVO` int(11) NOT NULL,
   `NOMBRE` varchar(20) DEFAULT NULL,
   `AREA` int(11) NOT NULL,
-  `FECHA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `FECHA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `IDUSUARIO` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `cultivo`
---
-
-INSERT INTO `cultivo` (`IDCULTIVO`, `NOMBRE`, `AREA`, `FECHA`) VALUES
-(2, 'primercultivo editad', 321, '2019-06-11 05:13:20'),
-(3, 'nuevo cultivo OwO', 1000, '2019-06-10 16:58:53'),
-(4, 'nuevo cultivo', 1000, '2019-06-10 17:03:36'),
-(5, 'nuevo cultivo', 1000, '2019-06-10 17:03:59'),
-(6, 'nuevo cultivo', 1000, '2019-06-10 17:05:31'),
-(7, 'nuevo cultivo', 1000, '2019-06-10 17:05:35'),
-(8, 'nuevo cultivo', 1000, '2019-06-10 17:05:49'),
-(9, 'nuevo cultivo', 1000, '2019-06-10 17:07:33'),
-(10, 'nuevo cultivo', 1000, '2019-06-10 17:07:47'),
-(11, 'cultivo boris', 10, '2019-06-10 17:14:28'),
-(12, 'coca ', 120, '2019-06-11 01:53:15');
 
 -- --------------------------------------------------------
 
@@ -144,20 +90,9 @@ CREATE TABLE `cultivoact` (
   `IDCULTIVO` int(11) NOT NULL,
   `IDACTIVIDAD` int(11) NOT NULL,
   `IDTRABAJADOR` int(11) NOT NULL,
-  `FECHA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `FECHA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `IDUSUARIO` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `cultivoact`
---
-
-INSERT INTO `cultivoact` (`IDCULTIVOACT`, `IDCULTIVO`, `IDACTIVIDAD`, `IDTRABAJADOR`, `FECHA`) VALUES
-(1, 2, 1, 1, '2019-06-09 20:40:32'),
-(2, 2, 1, 2, '2019-06-09 20:40:32'),
-(3, 2, 2, 1, '2019-06-09 20:47:11'),
-(4, 2, 1, 1, '2019-06-11 03:47:25'),
-(5, 12, 1, 17, '2019-06-11 03:48:29'),
-(6, 2, 3, 1, '2019-06-11 06:27:12');
 
 -- --------------------------------------------------------
 
@@ -170,18 +105,53 @@ CREATE TABLE `cultivocontrol` (
   `IDCULTIVO` int(11) NOT NULL,
   `IDCONTROLCALIDAD` int(11) NOT NULL,
   `IDTRABAJADOR` int(11) NOT NULL,
-  `Fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `Fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `IDUSUARIO` int(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `organizacion`
+--
+
+CREATE TABLE `organizacion` (
+  `IDORGANIZACION` int(10) NOT NULL,
+  `NOMBRE` varchar(20) DEFAULT NULL,
+  `NOMUSUARIO` varchar(20) DEFAULT NULL,
+  `PASSWORD` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `cultivocontrol`
+-- Volcado de datos para la tabla `organizacion`
 --
 
-INSERT INTO `cultivocontrol` (`IDCULTIVOCONTROL`, `IDCULTIVO`, `IDCONTROLCALIDAD`, `IDTRABAJADOR`, `Fecha`) VALUES
-(1, 2, 9, 1, '2019-06-10 00:31:28'),
-(2, 2, 5, 18, '2019-06-10 00:31:28'),
-(3, 2, 1, 1, '2019-06-11 06:26:30'),
-(4, 2, 1, 19, '2019-06-11 06:28:00');
+INSERT INTO `organizacion` (`IDORGANIZACION`, `NOMBRE`, `NOMUSUARIO`, `PASSWORD`) VALUES
+(1, 'CAFE1', 'CAFE1', '1234');
+
+--
+-- Disparadores `organizacion`
+--
+DELIMITER $$
+CREATE TRIGGER `AFTER_ORGANIZACION_INSERT` AFTER INSERT ON `organizacion` FOR EACH ROW BEGIN 
+
+INSERT INTO USUARIO(
+IDORGANIZACION,
+NOMBRE, 
+NOMUSUARIO,
+PASSWORD,
+ADMIN
+)
+VALUES(
+NEW.IDORGANIZACION,
+NEW.NOMBRE,
+NEW.NOMUSUARIO,
+NEW.PASSWORD,
+1
+);
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -220,25 +190,6 @@ INSERT INTO `tipocontrol` (`IDTIPOC`, `TIPO`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipotrabajador`
---
-
-CREATE TABLE `tipotrabajador` (
-  `IDTIPOT` int(11) NOT NULL,
-  `DESCRIPCIO` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `tipotrabajador`
---
-
-INSERT INTO `tipotrabajador` (`IDTIPOT`, `DESCRIPCIO`) VALUES
-(1, 'PRIMERO'),
-(2, 'SEGUNDO');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `trabajador`
 --
 
@@ -246,25 +197,10 @@ CREATE TABLE `trabajador` (
   `IDTRABAJADOR` int(11) NOT NULL,
   `NOMBRE` varchar(20) DEFAULT NULL,
   `APELLIDO` varchar(20) DEFAULT NULL,
-  `TELEFONO` varchar(20) DEFAULT NULL
+  `TELEFONO` varchar(20) DEFAULT NULL,
+  `CEDULA` int(10) NOT NULL,
+  `IDUSUARIO` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `trabajador`
---
-
-INSERT INTO `trabajador` (`IDTRABAJADOR`, `NOMBRE`, `APELLIDO`, `TELEFONO`) VALUES
-(1, 'MARIA 1', 'MILAGROS', '3214568547'),
-(2, 'RAMON', 'jose', '3124563212'),
-(17, 'Carlos', 'Pablos', '3215874696'),
-(18, 'Carlos', 'Jose', '3209876123'),
-(19, 'Carlos', 'MIGUEL', '3209876123'),
-(20, 'MARIA EDITADA', 'MILAGROS', '3214568547'),
-(21, 'MARIA EDITADA 2', 'MILAGROS', '3214568547'),
-(22, 'MARIA EDITADA 3', 'MILAGROS', '3214568547'),
-(23, 'MARIA EDITADA 4', 'MILAGROS', '3214568547'),
-(24, 'jose', 'pablos', '3044919561'),
-(25, 'MARIA 1', 'MILAGROS', '3214568547');
 
 -- --------------------------------------------------------
 
@@ -273,26 +209,21 @@ INSERT INTO `trabajador` (`IDTRABAJADOR`, `NOMBRE`, `APELLIDO`, `TELEFONO`) VALU
 --
 
 CREATE TABLE `usuario` (
-  `IDUSUARIO` int(11) NOT NULL,
+  `IDUSUARIO` int(10) NOT NULL,
   `NOMBRE` varchar(20) DEFAULT NULL,
   `APELLIDO` varchar(20) DEFAULT NULL,
   `NOMUSUARIO` varchar(20) DEFAULT NULL,
   `PASSWORD` varchar(20) DEFAULT NULL,
-  `ADMIN` tinyint(1) DEFAULT NULL
+  `ADMIN` tinyint(1) DEFAULT NULL,
+  `IDORGANIZACION` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`IDUSUARIO`, `NOMBRE`, `APELLIDO`, `NOMUSUARIO`, `PASSWORD`, `ADMIN`) VALUES
-(1, 'ANDRES', 'BORIS', 'USUARIO1', '1234', 1),
-(2, 'CARLOS', 'PABLOS', 'USUARIO2', '1234', 0),
-(3, 'BRAYAN', 'PALOMINO', 'USUARIO3', '1234', 0),
-(4, 'JORGE', 'GOMEZ', 'USERPRUEBA', '1234', NULL),
-(5, 'MIGUEL', 'CASTRO', 'USUARIO4', '1234', 0),
-(6, 'MARLON', 'BRANDO', 'USUARIO5', '1234', 0),
-(7, 'JORGito', 'GOMEZ', 'USERPRUEBA', '1234', 0);
+INSERT INTO `usuario` (`IDUSUARIO`, `NOMBRE`, `APELLIDO`, `NOMUSUARIO`, `PASSWORD`, `ADMIN`, `IDORGANIZACION`) VALUES
+(8, 'CAFE1', NULL, 'CAFE1', '1234', 1, 1);
 
 --
 -- Índices para tablas volcadas
@@ -302,27 +233,31 @@ INSERT INTO `usuario` (`IDUSUARIO`, `NOMBRE`, `APELLIDO`, `NOMUSUARIO`, `PASSWOR
 -- Indices de la tabla `actividad`
 --
 ALTER TABLE `actividad`
-  ADD PRIMARY KEY (`IDACTIVIDAD`);
+  ADD PRIMARY KEY (`IDACTIVIDAD`),
+  ADD KEY `FK_ACTIVIDAD` (`IDUSUARIO`);
 
 --
 -- Indices de la tabla `analisis`
 --
 ALTER TABLE `analisis`
   ADD PRIMARY KEY (`IDANALISIS`),
-  ADD KEY `IDCULTIVO` (`IDCULTIVO`);
+  ADD KEY `IDCULTIVO` (`IDCULTIVO`),
+  ADD KEY `FK_ANALISIS` (`IDUSUARIO`);
 
 --
 -- Indices de la tabla `controlcalidad`
 --
 ALTER TABLE `controlcalidad`
   ADD PRIMARY KEY (`IDCONTROLCALIDAD`),
-  ADD KEY `IDTIPOC` (`IDTIPOC`);
+  ADD KEY `IDTIPOC` (`IDTIPOC`),
+  ADD KEY `FK_CONTROLCALIDAD` (`IDUSUARIO`);
 
 --
 -- Indices de la tabla `cultivo`
 --
 ALTER TABLE `cultivo`
-  ADD PRIMARY KEY (`IDCULTIVO`);
+  ADD PRIMARY KEY (`IDCULTIVO`),
+  ADD KEY `FK_CULTIVO` (`IDUSUARIO`);
 
 --
 -- Indices de la tabla `cultivoact`
@@ -331,7 +266,8 @@ ALTER TABLE `cultivoact`
   ADD PRIMARY KEY (`IDCULTIVOACT`),
   ADD KEY `IDCULTIVO` (`IDCULTIVO`),
   ADD KEY `IDACTIVIDAD` (`IDACTIVIDAD`),
-  ADD KEY `IDTRABAJADOR` (`IDTRABAJADOR`);
+  ADD KEY `IDTRABAJADOR` (`IDTRABAJADOR`),
+  ADD KEY `FK_CULTIVOACT` (`IDUSUARIO`);
 
 --
 -- Indices de la tabla `cultivocontrol`
@@ -340,7 +276,14 @@ ALTER TABLE `cultivocontrol`
   ADD PRIMARY KEY (`IDCULTIVOCONTROL`),
   ADD KEY `IDCULTIVO` (`IDCULTIVO`),
   ADD KEY `IDCONTROLCALIDAD` (`IDCONTROLCALIDAD`),
-  ADD KEY `IDTRABAJADOR` (`IDTRABAJADOR`);
+  ADD KEY `IDTRABAJADOR` (`IDTRABAJADOR`),
+  ADD KEY `FK_CULTIVOCONTROL` (`IDUSUARIO`);
+
+--
+-- Indices de la tabla `organizacion`
+--
+ALTER TABLE `organizacion`
+  ADD PRIMARY KEY (`IDORGANIZACION`);
 
 --
 -- Indices de la tabla `salida`
@@ -357,22 +300,18 @@ ALTER TABLE `tipocontrol`
   ADD PRIMARY KEY (`IDTIPOC`);
 
 --
--- Indices de la tabla `tipotrabajador`
---
-ALTER TABLE `tipotrabajador`
-  ADD PRIMARY KEY (`IDTIPOT`);
-
---
 -- Indices de la tabla `trabajador`
 --
 ALTER TABLE `trabajador`
-  ADD PRIMARY KEY (`IDTRABAJADOR`);
+  ADD PRIMARY KEY (`IDTRABAJADOR`),
+  ADD KEY `FK_TRABAJADOR` (`IDUSUARIO`);
 
 --
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`IDUSUARIO`);
+  ADD PRIMARY KEY (`IDUSUARIO`),
+  ADD KEY `FK_USUARIO` (`IDORGANIZACION`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -388,7 +327,7 @@ ALTER TABLE `actividad`
 -- AUTO_INCREMENT de la tabla `analisis`
 --
 ALTER TABLE `analisis`
-  MODIFY `IDANALISIS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `IDANALISIS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `controlcalidad`
@@ -400,7 +339,7 @@ ALTER TABLE `controlcalidad`
 -- AUTO_INCREMENT de la tabla `cultivo`
 --
 ALTER TABLE `cultivo`
-  MODIFY `IDCULTIVO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `IDCULTIVO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `cultivoact`
@@ -415,6 +354,12 @@ ALTER TABLE `cultivocontrol`
   MODIFY `IDCULTIVOCONTROL` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT de la tabla `organizacion`
+--
+ALTER TABLE `organizacion`
+  MODIFY `IDORGANIZACION` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `salida`
 --
 ALTER TABLE `salida`
@@ -427,12 +372,6 @@ ALTER TABLE `tipocontrol`
   MODIFY `IDTIPOC` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `tipotrabajador`
---
-ALTER TABLE `tipotrabajador`
-  MODIFY `IDTIPOT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT de la tabla `trabajador`
 --
 ALTER TABLE `trabajador`
@@ -442,28 +381,43 @@ ALTER TABLE `trabajador`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `IDUSUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `IDUSUARIO` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
+-- Filtros para la tabla `actividad`
+--
+ALTER TABLE `actividad`
+  ADD CONSTRAINT `FK_ACTIVIDAD` FOREIGN KEY (`IDUSUARIO`) REFERENCES `usuario` (`IDUSUARIO`);
+
+--
 -- Filtros para la tabla `analisis`
 --
 ALTER TABLE `analisis`
+  ADD CONSTRAINT `FK_ANALISIS` FOREIGN KEY (`IDUSUARIO`) REFERENCES `usuario` (`IDUSUARIO`),
   ADD CONSTRAINT `analisis_ibfk_1` FOREIGN KEY (`IDCULTIVO`) REFERENCES `cultivo` (`IDCULTIVO`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `controlcalidad`
 --
 ALTER TABLE `controlcalidad`
+  ADD CONSTRAINT `FK_CONTROLCALIDAD` FOREIGN KEY (`IDUSUARIO`) REFERENCES `usuario` (`IDUSUARIO`),
   ADD CONSTRAINT `controlcalidad_ibfk_1` FOREIGN KEY (`IDTIPOC`) REFERENCES `tipocontrol` (`IDTIPOC`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `cultivo`
+--
+ALTER TABLE `cultivo`
+  ADD CONSTRAINT `FK_CULTIVO` FOREIGN KEY (`IDUSUARIO`) REFERENCES `usuario` (`IDUSUARIO`);
 
 --
 -- Filtros para la tabla `cultivoact`
 --
 ALTER TABLE `cultivoact`
+  ADD CONSTRAINT `FK_CULTIVOACT` FOREIGN KEY (`IDUSUARIO`) REFERENCES `usuario` (`IDUSUARIO`),
   ADD CONSTRAINT `cultivoact_ibfk_1` FOREIGN KEY (`IDCULTIVO`) REFERENCES `cultivo` (`IDCULTIVO`) ON DELETE CASCADE,
   ADD CONSTRAINT `cultivoact_ibfk_2` FOREIGN KEY (`IDACTIVIDAD`) REFERENCES `actividad` (`IDACTIVIDAD`) ON DELETE CASCADE,
   ADD CONSTRAINT `cultivoact_ibfk_3` FOREIGN KEY (`IDTRABAJADOR`) REFERENCES `trabajador` (`IDTRABAJADOR`) ON DELETE CASCADE;
@@ -472,6 +426,7 @@ ALTER TABLE `cultivoact`
 -- Filtros para la tabla `cultivocontrol`
 --
 ALTER TABLE `cultivocontrol`
+  ADD CONSTRAINT `FK_CULTIVOCONTROL` FOREIGN KEY (`IDUSUARIO`) REFERENCES `usuario` (`IDUSUARIO`),
   ADD CONSTRAINT `cultivocontrol_ibfk_1` FOREIGN KEY (`IDCULTIVO`) REFERENCES `cultivo` (`IDCULTIVO`) ON DELETE CASCADE,
   ADD CONSTRAINT `cultivocontrol_ibfk_2` FOREIGN KEY (`IDCONTROLCALIDAD`) REFERENCES `controlcalidad` (`IDCONTROLCALIDAD`) ON DELETE CASCADE,
   ADD CONSTRAINT `cultivocontrol_ibfk_3` FOREIGN KEY (`IDTRABAJADOR`) REFERENCES `trabajador` (`IDTRABAJADOR`) ON DELETE CASCADE;
@@ -482,6 +437,18 @@ ALTER TABLE `cultivocontrol`
 ALTER TABLE `salida`
   ADD CONSTRAINT `salida_ibfk_1` FOREIGN KEY (`IDCULTIVO`) REFERENCES `cultivo` (`IDCULTIVO`) ON DELETE CASCADE,
   ADD CONSTRAINT `salida_ibfk_2` FOREIGN KEY (`IDTRABAJADOR`) REFERENCES `trabajador` (`IDTRABAJADOR`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `trabajador`
+--
+ALTER TABLE `trabajador`
+  ADD CONSTRAINT `FK_TRABAJADOR` FOREIGN KEY (`IDUSUARIO`) REFERENCES `usuario` (`IDUSUARIO`);
+
+--
+-- Filtros para la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `FK_USUARIO` FOREIGN KEY (`IDORGANIZACION`) REFERENCES `organizacion` (`IDORGANIZACION`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

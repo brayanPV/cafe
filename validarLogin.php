@@ -15,11 +15,12 @@ if($num > 0){
 foreach ($res as $item){
     $admin = $item["ADMIN"];
     $nombre = $item["NOMBRE"];
-    
+    $idusuario = $item["IDUSUARIO"];
 
 }
 $_SESSION['admin']=$admin;
 $_SESSION['nombre']=$nombre;
+$_SESSION['idusuario']=$idusuario;    
 header('Location: directioner.php');
 }
 else{

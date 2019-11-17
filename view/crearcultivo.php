@@ -1,3 +1,9 @@
+<?php
+if(!isset($_SESSION))
+{
+session_start();
+}  ?>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
@@ -34,6 +40,9 @@
 					<div class="form-group">
 						<label for="textInput">Area del Cultivo</label>
 						<input type="number" id="textInput" class="form-control mb-4" placeholder="Ingrese area del Cultivo" required min="1" max="1000" name="area" >
+                    </div>
+                    <div>
+						<input type="hidden" name="idusuario" value ="<?php echo $_SESSION['idusuario'] ?>">
 					</div>
 				</div>
 				<!-- /.box-body -->
