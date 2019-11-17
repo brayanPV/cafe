@@ -43,6 +43,9 @@
 						<label for="textInput">Contraseña</label>
 						<input type="text" name="password" id="textInput" class="form-control mb-4" placeholder="Ingrese la contraseña"    required>
 					</div>
+					<div>
+						    <input type="hidden" name="idorganizacion" value="<?php echo $_SESSION['idorganizacion'] ?>" />
+						</div>
 					
 				</div>
 				<!-- /.box-body -->

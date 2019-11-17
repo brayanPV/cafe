@@ -52,6 +52,7 @@ class UsuarioController{
         $alm->apellido = $_REQUEST['apellido'];
 		$alm->nomusuario = $_REQUEST['nomusuario'];
         $alm->password = $_REQUEST['password'];
+        $alm->idorganizacion = $_REQUEST['idorganizacion'];
 
         $alm->ID > 0 
             ? $this->model->Actualizar($alm)

@@ -8,6 +8,7 @@ class Usuario
     public $apellido;
     public $nomusuario;
     public $password;
+    public $ORGANIZACION;
     
 
 	public function __CONSTRUCT()
@@ -29,9 +30,13 @@ class Usuario
 	{
 		try
 		{
+            $IDORGANIZACION = $_SESSION['idorganizacion'];
 			$result = array();
 
-			$stm = $this->pdo->prepare("SELECT * FROM usuario");
+			$stm = $this->pdo->prepare("SELECT U.IDUSUARIO, U.NOMBRE, U.APELLIDO, U.NOMUSUARIO FROM usuario U
+            INNER JOIN ORGANIZACION O
+            ON U.IDORGANIZACION = O.IDORGANIZACION
+            AND O.IDORGANIZACION = '$IDORGANIZACION'");
 			$stm->execute();
 
 			return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -103,8 +108,8 @@ class Usuario
 	{
 		try 
 		{
-		$sql = "INSERT INTO usuario (nombre,apellido,nomusuario, password,admin) 
-		        VALUES (?, ?, ?, ?,0)";
+		$sql = "INSERT INTO usuario (nombre,apellido,nomusuario, password,admin, IDORGANIZACION) 
+		        VALUES (?, ?, ?, ?,0,?)";
 
 		$this->pdo->prepare($sql)
 		     ->execute(
@@ -113,6 +118,7 @@ class Usuario
                     $data->apellido,
 					$data->nomusuario,
                     $data->password,
+                    $data->idorganizacion
                 )
 			);
 		} catch (Exception $e) 

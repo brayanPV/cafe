@@ -37,7 +37,14 @@
 					</div>
 					<div class="form-group">
 						<label for="textInput">telefono del trabajador</label>
-						<input type="number" name="telefono" id="textInput" class="form-control mb-4" placeholder="Ingrese telefobo"    required>
+						<input type="number" name="telefono" id="textInput" class="form-control mb-4" placeholder="Ingrese telefono"    required>
+					</div>
+					<div class="form-group">
+						<label for="textInput">cedula del trabajador</label>
+						<input type="number" name="cedula" id="textInput" class="form-control mb-4" placeholder="Ingrese cedula"    required>
+					</div>
+					<div class="form-group">
+						<input type="hidden" name="idusuario" id="textInput" class="form-control mb-4" value ="<?php echo $_SESSION['idusuario'] ?>">
 					</div>
 					
 				</div>

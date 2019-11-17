@@ -7,6 +7,8 @@ class Trabajador
     public $nombre;
     public $apellido;
     public $telefono;
+    public $cedula;
+    public $IDORGANIZACION;
 
 	public function __CONSTRUCT()
 	{
@@ -27,9 +29,15 @@ class Trabajador
 	{
 		try
 		{
+            $IDORGANIZACION = $_SESSION['idorganizacion'];
 			$result = array();
 
-			$stm = $this->pdo->prepare("SELECT * FROM trabajador");
+			$stm = $this->pdo->prepare("SELECT T.IDTRABAJADOR, T.NOMBRE,T.APELLIDO,T.TELEFONO FROM trabajador T
+            INNER JOIN USUARIO U
+            ON T.IDUSUARIO = U.IDUSUARIO
+            INNER JOIN ORGANIZACION O
+            ON U.IDORGANIZACION =O.IDORGANIZACION
+            AND O.IDORGANIZACION = '$IDORGANIZACION'");
 			$stm->execute();
 
 			return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -115,15 +123,17 @@ class Trabajador
 	{
 		try 
 		{
-		$sql = "INSERT INTO trabajador (nombre,apellido,telefono) 
-		        VALUES (?, ?, ?)";
+		$sql = "INSERT INTO trabajador (nombre,apellido,telefono,cedula,idusuario) 
+		        VALUES (?,?,?,?,?)";
 
 		$this->pdo->prepare($sql)
 		     ->execute(
 				array(
                     $data->nombre,
                     $data->apellido,
-					$data->telefono
+					$data->telefono,
+                    $data->cedula,
+                    $data->idusuario
                 )
 			);
 		} catch (Exception $e) 

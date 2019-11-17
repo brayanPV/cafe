@@ -51,6 +51,8 @@ class TrabajadorController{
         $alm->nombre = $_REQUEST['nombre'];
         $alm->apellido = $_REQUEST['apellido'];
 		$alm->telefono = $_REQUEST['telefono'];
+        $alm->cedula = $_REQUEST['cedula'];
+        $alm->idusuario = $_REQUEST['idusuario'];
 
         $alm->ID > 0 
             ? $this->model->Actualizar($alm)
