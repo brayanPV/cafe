@@ -1,38 +1,31 @@
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-	<!-- Content Header (Page header) -->
-	<section class="content-header">
-		<h1>
-			Cafe
-			<small>Mostrar actividades creadas</small>
-		</h1>
-		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-			<li class="active">Here</li>
-		</ol>
-	</section>
+<div class="container-fluid">
 
-	<!-- Main content -->
-	<section class="content container-fluid">
+	<!-- Page Heading -->
+	<h1 class="h3 mb-2 text-gray-800">Ver Actividades</h1>
 
-		<!--------------------------
-        | Your Page Content Here |
-        -------------------------->
-		<div class="box">
-			<div class="box-header">
-				<h3 class="box-title">Tabla de todas las actividades creadas</h3>
-			</div>
-			<!-- /.box-header -->
-			<div class="box-body">
-				<table id="example1" class="table table-bordered table-striped">
+
+	<!-- DataTales Example -->
+	<div class="card shadow mb-4">
+		<div class="card-header py-3">
+			<h6 class="m-0 font-weight-bold text-primary">Registros de Actividades Creadas</h6>
+		</div>
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 					<thead>
 						<tr>
-							<th>ID ACTIVIDAD</th>
+							<th>ID</th>
 							<th>Nombre</th>
 							<th>editar</th>
-							
 						</tr>
 					</thead>
+					<tfoot>
+						<tr>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th>editar</th>
+						</tr>
+					</tfoot>
 					<tbody>
 						<?php foreach($this->model->Listar() as $r): ?>
 						<tr>
@@ -44,23 +37,10 @@
 						</tr>
 						<?php endforeach; ?>
 					</tbody>
-					<tfoot>
-						<tr>
-							<th>ID ACTIVIDAD</th>
-							<th>Nombre</th>
-							<th>editar</th>
-							
-						</tr>
-					</tfoot>
 				</table>
 			</div>
-
-			
-			<!-- /.box-body -->
 		</div>
-
-	</section>
-	<!-- /.content -->
+	</div>
 
 </div>
-<!-- /.content-wrapper -->
+<!-- /.container-fluid -->

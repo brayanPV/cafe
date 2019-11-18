@@ -1,30 +1,17 @@
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-	<!-- Content Header (Page header) -->
-	<section class="content-header">
-		<h1>
-			Cafe
-			<small>Mostrar Analisis</small>
-		</h1>
-		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-			<li class="active">Here</li>
-		</ol>
-	</section>
+<div class="container-fluid">
 
-	<!-- Main content -->
-	<section class="content container-fluid">
+	<!-- Page Heading -->
+	<h1 class="h3 mb-2 text-gray-800">Ver Analisis de Suelo</h1>
 
-		<!--------------------------
-        | Your Page Content Here |
-        -------------------------->
-		<div class="box">
-			<div class="box-header">
-				<h3 class="box-title">Tabla de todos los analisis</h3>
-			</div>
-			<!-- /.box-header -->
-			<div class="box-body">
-				<table id="example1" class="table table-bordered table-striped">
+
+	<!-- DataTales Example -->
+	<div class="card shadow mb-4">
+		<div class="card-header py-3">
+			<h6 class="m-0 font-weight-bold text-primary">Registros de Analisis</h6>
+		</div>
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 					<thead>
 						<tr>
 							<th>ID</th>
@@ -33,11 +20,22 @@
 							<th>potasio</th>
 							<th>nitrogeno</th>
 							<th>fosforo</th>
-							<th>ph</th>
+							<th>PH</th>
 							<th>FECHA</th>
-							
 						</tr>
 					</thead>
+					<tfoot>
+						<tr>
+							<th>ID</th>
+							<th>Cultivo</th>
+							<th>NombreCultivo</th>
+							<th>potasio</th>
+							<th>nitrogeno</th>
+							<th>fosforo</th>
+							<th>PH</th>
+							<th>FECHA</th>
+						</tr>
+					</tfoot>
 					<tbody>
 						<?php foreach($this->model->Listar() as $r): ?>
 						<tr>
@@ -49,33 +47,15 @@
 							<td><?php echo $r->PROPIEDAD3; ?></td>
 							<td><?php echo $r->PROPIEDAD4; ?></td>
 							<td><?php echo $r->FECHA; ?></td>
-							
-							
+
+
 						</tr>
 						<?php endforeach; ?>
 					</tbody>
-					<tfoot>
-						<tr>
-							<th>ID</th>
-							<th>Cultivo</th>
-							<th>NombreCultivo</th>
-							<th>potasio</th>
-							<th>nitrogeno</th>
-							<th>fosforo</th>
-							<th>ph</th>
-							<th>FECHA</th>
-							
-						</tr>
-					</tfoot>
 				</table>
 			</div>
-
-			
-			<!-- /.box-body -->
 		</div>
-
-	</section>
-	<!-- /.content -->
+	</div>
 
 </div>
-<!-- /.content-wrapper -->
+<!-- /.container-fluid -->

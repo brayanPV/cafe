@@ -1,78 +1,59 @@
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-	<!-- Content Header (Page header) -->
-	<section class="content-header">
-		<h1>
-			Cafe
-			<small>Registre Un nuevo analisis de suelo</small>
-		</h1>
-		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-			<li class="active">Here</li>
-		</ol>
-	</section>
+<!-- Begin Page Content -->
+<div class="container-fluid">
 
-	<!-- Main content -->
-	<section class="content container-fluid">
+	<!-- Page Heading -->
+	<h1 class="h3 mb-4 text-gray-800">Registre un analisis de suelo</h1>
 
-		<!--------------------------
-        | Your Page Content Here |
-        -------------------------->
-		<div class="box box-primary">
-			<div class="box-header with-border">
-				<h3 class="box-title">Registrar Analisis de Suelo</h3>
-			</div>
-			<!-- /.box-header -->
-			<!-- form start -->
-			<form role="form" id="frm-zona" action="?c=Analisis&a=Guardar" method="post" enctype="multipart/form-data">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">Formulario Registro Analisis</h6>
+				</div>
+				<form role="form" id="frm-zona" action="?c=Analisis&a=Guardar" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="id" value="<?php echo $alm->id; ?>" />
-				
-				<div class="box-body">
-				<div class="form-group">
-                  <label>Slelccione el cultivo</label>
-                  <select class="form-control" name="idcultivo">
-                   <?php foreach($this->model->Listar1() as $r): ?>
-					  <option value="<?php echo $r->IDCULTIVO; ?>"><?php echo $r->IDCULTIVO; ?> ||<?php echo $r->NOMBRE; ?></option>
-                    <?php endforeach; ?>
-                    
-                  </select>
-                </div>
-					<div class="row">
-					<div class="col-xs-3">
-						<label for="textInput">Potasio</label>
-						<input type="number" name="propiedad1" id="textInput" class="form-control mb-4" placeholder="Ingrese propiedad 1 %"   required min="1" max="100" required>
-				</div>
-				<div class="col-xs-3">
-					<label for="textInput">Nitrogeno</label>
-						<input type="number" name="propiedad2" id="textInput" class="form-control mb-4" placeholder="Ingrese propiedad 2 %"   required min="1" max="100" required>
-				</div>
-				<div class="col-xs-3">
-							<label for="textInput">Fosforo</label>
-							<input type="number" name="propiedad3" id="textInput" class="form-control mb-4" placeholder="Ingrese propiedad 3 %"   required min="1" max="100" required>						
+					<div class="card-body">
+
+						<div class="form-group">
+							<label>Nombre del cultivo</label>
+							<select name="idcultivo" id="" class="form-control" name="idcultivo">
+								<?php foreach($this->model->Listar1() as $r): ?>
+								<option value="<?php echo $r->IDCULTIVO; ?>"><?php echo $r->IDCULTIVO; ?> ||<?php echo $r->NOMBRE; ?></option>
+								<?php endforeach; ?>
+							</select>
 						</div>
-						<div class="col-xs-3">
-							<label for="textInput">PH</label>
-							<input type="number" name="propiedad4" id="textInput" class="form-control mb-4" placeholder="Ingrese propiedad 4 %"   required min="1" max="100" required>
+						<div class="form-row">
+							<div class="col">
+								<label>Potasio</label>
+								<input class="form-control" type="number" placeholder="ingrese porcentaje" min="0" max="100" name="propiedad1">
+							</div>
+							<div class="col">
+								<label>Nitrogeno</label>
+								<input class="form-control" type="number" placeholder="ingrese porcentaje" min="0" max="100" name="propiedad2">
+							</div>
+							<div class="col">
+								<label>Fosforo</label>
+								<input class="form-control" type="number" placeholder="ingrese porcentaje" min="0" max="100" name="propiedad3">
+							</div>
+							<div class="col">
+								<label>PH</label>
+								<input class="form-control" type="number" placeholder="ingrese porcentaje" min="0" max="100" name="propiedad4">
+							</div>
 						</div>
 						<div>
-						    <input type="hidden" name="idusuario" value="<?php echo $_SESSION['idusuario'] ?>" />
+							 <input type="hidden" name="idusuario" value="<?php echo $_SESSION['idusuario'] ?>" />
 						</div>
 					</div>
-					
-					
-				</div>
-				<!-- /.box-body -->
+					<div class="card-footer">
+						<button type="submit" class="btn btn-primary" onclick="showAlert()">Registrar Analisis</button>
+					</div>
 
-				<div class="box-footer">
-					<button type="submit" class="btn btn-primary"  onclick="showAlert()">Registrar Analisis de suelo</button>
-				</div>
-			</form>
+
+				</form>
+			</div>
 		</div>
+	</div>
 
-	</section>
-	<!-- /.content -->
 
 </div>
-
-
-<!-- /.content-wrapper -->
+<!-- /.container-fluid -->

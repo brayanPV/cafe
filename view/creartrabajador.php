@@ -1,65 +1,48 @@
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-	<!-- Content Header (Page header) -->
-	<section class="content-header">
-		<h1>
-			Cafe
-			<small>Cree un trabajador</small>
-		</h1>
-		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-			<li class="active">Here</li>
-		</ol>
-	</section>
+<!-- Begin Page Content -->
+<div class="container-fluid">
 
-	<!-- Main content -->
-	<section class="content container-fluid">
+	<!-- Page Heading -->
+	<h1 class="h3 mb-4 text-gray-800">Crear Trabajdor</h1>
 
-		<!--------------------------
-        | Your Page Content Here |
-        -------------------------->
-		<div class="box box-primary">
-			<div class="box-header with-border">
-				<h3 class="box-title">Crear Trabajador</h3>
-			</div>
-			<!-- /.box-header -->
-			<!-- form start -->
-			<form role="form" id="frm-zona" action="?c=Trabajador&a=Guardar" method="post" enctype="multipart/form-data">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">Formulario Registro Trabajador</h6>
+				</div>
+				<form role="form" id="frm-zona" action="?c=Trabajador&a=Guardar" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="id" value="<?php echo $alm->IDTRABAJADOR; ?>" />
-				<div class="box-body">
-					<div class="form-group">
-						<label for="textInput">Nombre del trabajador</label>
-						<input type="text" name="nombre" id="textInput" class="form-control mb-4" placeholder="Ingrese nombre"    required>
-					</div>
-					<div class="form-group">
-						<label for="textInput">apellido del trabajador</label>
-						<input type="text" name="apellido" id="textInput" class="form-control mb-4" placeholder="Ingrese apellido"    required>
-					</div>
-					<div class="form-group">
-						<label for="textInput">telefono del trabajador</label>
-						<input type="number" name="telefono" id="textInput" class="form-control mb-4" placeholder="Ingrese telefono"    required>
-					</div>
-					<div class="form-group">
-						<label for="textInput">cedula del trabajador</label>
-						<input type="number" name="cedula" id="textInput" class="form-control mb-4" placeholder="Ingrese cedula"    required>
-					</div>
-					<div class="form-group">
+					<div class="card-body">
+
+						<div class="form-group">
+							<label>Nombre del trabajador</label>
+							<input class="form-control" type="text" placeholder="ingrese el nombre " required name="nombre">
+						</div>
+						<div class="form-group">
+							<label>apellido del trabajador</label>
+							<input class="form-control" type="text" placeholder="ingrese el apellido " required name="apellido">
+						</div>
+						<div class="form-group">
+							<label>telefono del trabajador</label>
+							<input class="form-control" type="tel" placeholder="ingrese el celular" pattern="[0-9]{10}" required name="telefono">
+						</div>
+						<div class="form-group">
+							<label>cedula del trabajador</label>
+							<input class="form-control" type="number" placeholder="ingrese cedula"  required name="cedula">
+						</div>
+						<div class="form-group">
 						<input type="hidden" name="idusuario" id="textInput" class="form-control mb-4" value ="<?php echo $_SESSION['idusuario'] ?>">
 					</div>
-					
-				</div>
-				<!-- /.box-body -->
+					</div>
+					<div class="card-footer">
+						<button type="submit" class="btn btn-primary" onclick="showAlert()">Crear Trabajador</button></div>
 
-				<div class="box-footer">
-					<button type="submit" class="btn btn-primary"  onclick="showAlert()">Crear trabajador</button>
-				</div>
-			</form>
+
+				</form>
+			</div>
 		</div>
+	</div>
 
-	</section>
-	<!-- /.content -->
 
 </div>
-
-
-<!-- /.content-wrapper -->
+<!-- /.container-fluid -->

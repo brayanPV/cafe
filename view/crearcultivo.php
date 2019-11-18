@@ -3,60 +3,43 @@ if(!isset($_SESSION))
 {
 session_start();
 }  ?>
+<!-- Begin Page Content -->
+				<div class="container-fluid">
 
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-	<!-- Content Header (Page header) -->
-	<section class="content-header">
-		<h1>
-			Cafe
-			<small>Registre un nuevo cultivo</small>
-		</h1>
-		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-			<li class="active">Here</li>
-		</ol>
-	</section>
+					<!-- Page Heading -->
+					<h1 class="h3 mb-4 text-gray-800">Crear Cultivos</h1>
 
-	<!-- Main content -->
-	<section class="content container-fluid">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="card shadow mb-4">
+								<div class="card-header py-3">
+									<h6 class="m-0 font-weight-bold text-primary">Formulario Registro Cultivo</h6>
+								</div>
+								<form role="form" id="frm-cultivo" action="?c=Cultivo&a=Guardar" method="post" enctype="multipart/form-data">
+								<input type="hidden" name="id" value="<?php echo $alm->id; ?>" />
+									<div class="card-body">
 
-		<!--------------------------
-        | Your Page Content Here |
-        -------------------------->
-		<div class="box box-primary">
-			<div class="box-header with-border">
-				<h3 class="box-title">Crear Cultivo</h3>
-			</div>
-			<!-- /.box-header -->
-			<!-- form start -->
-			<form role="form" id="frm-cultivo" action="?c=Cultivo&a=Guardar" method="post" enctype="multipart/form-data">
-				<input type="hidden" name="id" value="<?php echo $alm->id; ?>" />
-				<div class="box-body">
-					<div class="form-group">
-						<label for="textInput">Nombre del Cultivo</label>
-						<input type="text" name="nombre" id="textInput" class="form-control mb-4" placeholder="Ingrese nombre"    required>
-					</div>
-					<div class="form-group">
-						<label for="textInput">Area del Cultivo</label>
-						<input type="number" id="textInput" class="form-control mb-4" placeholder="Ingrese area del Cultivo" required min="1" max="1000" name="area" >
-                    </div>
-                    <div>
+										<div class="form-group">
+											<label>Nombre del cultivo</label>
+											<input class="form-control" type="text" placeholder="ingrese el nombre del cultivo" name="nombre" required>
+										</div>
+										<div class="form-group">
+											<label>Area del cultivo</label>
+											<input class="form-control" type="number" placeholder="ingrese area del cultivo" min="0" max="1000" name="area" required>
+										</div>
+										<div>
 						<input type="hidden" name="idusuario" value ="<?php echo $_SESSION['idusuario'] ?>">
 					</div>
+									</div>
+									<div class="card-footer">
+										<button type="submit" class="btn btn-primary" onclick="showAlert()">Crear Cultivo</button></div>
+
+
+								</form>
+							</div>
+						</div>
+					</div>
+
+
 				</div>
-				<!-- /.box-body -->
-
-				<div class="box-footer">
-					<button type="submit" class="btn btn-primary"  onclick="showAlert()">Crear Cultivo</button>
-				</div>
-			</form>
-		</div>
-
-	</section>
-	<!-- /.content -->
-
-</div>
-
-
-<!-- /.content-wrapper -->
+				<!-- /.container-fluid -->

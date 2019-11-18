@@ -1,122 +1,64 @@
-<!-- Main Footer -->
-		<footer class="main-footer">
-			<!-- To the right -->
-			<div class="pull-right hidden-xs">
-				The best coffee software
+</div>
+			<!-- End of Main Content -->
+
+			<!-- Footer -->
+			<footer class="sticky-footer bg-white">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Copyright &copy; Company Apex</span>
+					</div>
+				</div>
+			</footer>
+			<!-- End of Footer -->
+
+		</div>
+		<!-- End of Content Wrapper -->
+
+	</div>
+	<!-- End of Page Wrapper -->
+
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top">
+		<i class="fas fa-angle-up"></i>
+	</a>
+
+	<!-- Logout Modal-->
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+					<a class="btn btn-primary" href="logout.php">Logout</a>
+				</div>
 			</div>
-			<!-- Default to the left -->
-			<strong>Copyright &copy; 2019 <a href="#">Company apex</a>.</strong> All rights reserved.
-		</footer>
+		</div>
+	</div>
 
-	<!-- REQUIRED JS SCRIPTS -->
+	<!-- Bootstrap core JavaScript-->
+	<script src="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/vendor/jquery/jquery.min.js"></script>
+	<script src="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-	<!-- jQuery 3 -->
-	<script src="https://adminlte.io/themes/AdminLTE/bower_components/jquery/dist/jquery.min.js"></script>
-	<!-- Bootstrap 3.3.7 -->
-	<script src="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-	<!-- AdminLTE App -->
-	<script src="https://adminlte.io/themes/AdminLTE/dist/js/adminlte.min.js"></script>
-	<!--datatbles-->
-	<script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script src="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script src="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/js/sb-admin-2.min.js"></script>
 	
-	<script src="view/js/tabla.js"></script>
-	
-	<script>
-	$(document).ready(function () {
+	 <!-- data tables plugins -->
+  <script src="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+ <!-- Page level custom scripts -->
+  <script src="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/js/demo/datatables-demo.js"></script>
+  
+  <script src="view/js/tabla.js"></script>
 
- 	$(document).on('click', '.add', function () {
- 		var html = '';
- 		html += '<tr>';
- 		
-        //mi mierda
-        //nombre
-        html += '<td><input type="text" name="item_nombre[]" class="form-control item_nombre" placeholder="ingrese el nombre" /></td>';
-        //precio
-        html += '<td><input type="number" min="1"  name="item_precio[]" class="form-control item_precio" placeholder="ingrese el precio" /></td>';
-        //cantidad
-        html += '<td><input type="number" min="1" max="30" name="item_quantity[]" class="form-control item_quantity" placeholder="ingrese cantidad" /></td>';
-        //proveedor
-        html += '<td><select name="item_proveedor[]" class="form-control item_proveedor"><option value="">Seleccione Proveedor</option><?php echo fill_unit_select_box($connect); ?></select></td>';
-        html += '<td><button type="button" name="remove" class="btn btn-danger btn-sm remove"><span class="glyphicon glyphicon-minus"></span></button></tr>';
-        $('#item_table').append(html);
- 	});
-
- 	$(document).on('click', '.remove', function () {
- 		$(this).closest('tr').remove();
- 	});
-
- 	$('#insert_form').on('submit', function (event) {
- 		event.preventDefault();
- 		var error = '';
-
- 		$('.item_nombre').each(function () {
- 			var count = 1;
- 			if ($(this).val() == '') {
- 				error += "<p>Enter Item Nombre at " + count + " Row</p>";
- 				return false;
- 			}
- 			count = count + 1;
- 		});
-        
-        $('.item_precio').each(function () {
- 			var count = 1;
- 			if ($(this).val() == '') {
- 				error += "<p>Enter Item Precio at " + count + " Row</p>";
- 				return false;
- 			}
- 			count = count + 1;
- 		});
-        
-        $('.item_quantity').each(function () {
- 			var count = 1;
- 			if ($(this).val() == '') {
- 				error += "<p>Enter Item Quantity at " + count + " Row</p>";
- 				return false;
- 			}
- 			count = count + 1;
- 		});
-        
-        
-
- 		$('.item_proveedor').each(function () {
- 			var count = 1;
- 			if ($(this).val() == '') {
- 				error += "<p>Select Proveedor at " + count + " Row</p>";
- 				return false;
- 			}
- 			count = count + 1;
- 		});
- 		var form_data = $(this).serialize();
- 		if (error == '') {
- 			$.ajax({
- 				url: "../../model/entrada.controller.php",
- 				method: "POST",
- 				data: form_data,
- 				success: function (data) {
- 					if (data == 'ok') {
- 						$('#item_table').find("tr:gt(0)").remove();
- 						$('#error').html('<div class="alert alert-success">Venta Registrada con Exito</div>');
-
- 					}
-
-
-
-
- 				}
- 			});
- 		} else {
- 			$('#error').html('<div class="alert alert-danger">' + error + '</div>');
- 		}
- 	});
-
- });
-
-</script>
-<!--	<script src="view/js/vender.js"></script>-->
-
-	<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
 </body>
 
 </html>
