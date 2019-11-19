@@ -1,9 +1,9 @@
 <?php 
 class Conexion{ 
-private $host="localhost";
-private $db="cafeuwu";
-private $usuario="root";
-private $clave="";
+private $host="madarme.co";
+private $db="estudiante_16";
+private $usuario="estudiante_16";
+private $clave="LonWFNBfP1";
 
 public function __construct() {
     $this->conexion = new mysqli( $this->host, $this->usuario, $this->clave, $this->db );		

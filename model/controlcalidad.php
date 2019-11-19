@@ -6,7 +6,6 @@ class ControlCalidad
     public $ID;
     public $nombre;
     public $idtipoc;
-    public $IDORGANIZACION;
     
 
 	public function __CONSTRUCT()
@@ -28,18 +27,12 @@ class ControlCalidad
 	{
 		try
 		{
-            $IDORGANIZACION = $_SESSION['idorganizacion'];
 			$result = array();
 
 			$stm = $this->pdo->prepare("SELECT CC.IDCONTROLCALIDAD, CC.NOMBRE, T.TIPO AS TIPO
-FROM CONTROLCALIDAD CC
-INNER JOIN TIPOCONTROL T
-INNER JOIN USUARIO U
-INNER JOIN ORGANIZACION O
-WHERE CC.IDTIPOC = T.IDTIPOC
-AND CC.IDUSUARIO = U.IDUSUARIO
-AND U.IDORGANIZACION = O.IDORGANIZACION
-AND O.IDORGANIZACION = '$IDORGANIZACION'");
+FROM controlcalidad CC
+INNER JOIN tipocontrol T
+WHERE CC.IDTIPOC = T.IDTIPOC");
 			$stm->execute();
 
 			return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -124,15 +117,14 @@ AND O.IDORGANIZACION = '$IDORGANIZACION'");
 	{
 		try 
 		{
-		$sql = "INSERT INTO CONTROLCALIDAD (nombre,idtipoc,idusuario) 
-		        VALUES (?, ?, ?)";
+		$sql = "INSERT INTO controlcalidad (nombre,idtipoc) 
+		        VALUES (?, ?)";
 
 		$this->pdo->prepare($sql)
 		     ->execute(
 				array(
                     $data->nombre,
-                    $data->idtipoc,
-                    $data->idusuario
+                    $data->idtipoc
                 )
 			);
 		} catch (Exception $e) 

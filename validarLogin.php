@@ -4,7 +4,7 @@ include("conexion.php");
 $objConectar = new Conexion();
 $user=$_POST["user"];
 $pass=$_POST["pass"];
-$q="SELECT * FROM USUARIO WHERE NOMUSUARIO='$user' AND PASSWORD='$pass'";
+$q="SELECT * FROM usuario WHERE NOMUSUARIO='$user' AND password='$pass'";
 
 $res=$objConectar->query($q);
 
@@ -16,13 +16,11 @@ foreach ($res as $item){
     $admin = $item["ADMIN"];
     $nombre = $item["NOMBRE"];
     $idusuario = $item["IDUSUARIO"];
-    $idorganizacion = $item["IDORGANIZACION"];
 
 }
 $_SESSION['admin']=$admin;
 $_SESSION['nombre']=$nombre;
-$_SESSION['idusuario']=$idusuario;
-$_SESSION['idorganizacion']=$idorganizacion;    
+$_SESSION['idusuario']=$idusuario;    
 header('Location: directioner.php');
 }
 else{

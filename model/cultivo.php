@@ -7,7 +7,7 @@ class Cultivo
     public $nombre;
     public $area;
     public $fecha;
-    public $idorganizacion;
+    public $idusuario;
 
 	public function __CONSTRUCT()
 	{
@@ -29,13 +29,13 @@ class Cultivo
 		try
 		{
 			$result = array();
-            $idorganizacion = $_SESSION['idorganizacion'];
-			$stm = $this->pdo->prepare("SELECT C.IDCULTIVO, C.NOMBRE, C.AREA, C.FECHA FROM cultivo c
-            inner join usuario u
-            inner join organizacion o
-            where c.idusuario = u.idusuario
-            and u.idorganizacion = o.idorganizacion
-            and u.idorganizacion = '$idorganizacion'");
+            $idusuario = $_SESSION['idusuario'];
+			$stm = $this->pdo->prepare("SELECT C.IDCULTIVO, C.NOMBRE, C.AREA, C.FECHA FROM cultivo C
+            INNER JOIN usuario U
+            INNER JOIN organizacion O
+            WHERE C.IDUSUARIO = '$idusuario' 
+            AND C.IDUSUARIO = U.IDUSUARIO
+            AND U.IDORGANIZACION = O.IDORGANIZACION");
 			$stm->execute();
 
 			return $stm->fetchAll(PDO::FETCH_OBJ);
