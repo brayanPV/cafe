@@ -10,6 +10,7 @@ class Analisis
 	public $PROPIEDAD3;
 	public $PROPIEDAD4;
 	public $FECHA;
+	public $IDORGANIZACION;
 	
 
 	public function __CONSTRUCT()
@@ -31,12 +32,18 @@ class Analisis
 	{
 		try
 		{
+			$IDORGANIZACION = $_SESSION['idorganizacion'];
 			$result = array();
 
 			$stm = $this->pdo->prepare("SELECT A.IDANALISIS, A.IDCULTIVO, C.NOMBRE AS NOMBRECULTIVO, A.PROPIEDAD1, A.PROPIEDAD2, A.PROPIEDAD3, A.PROPIEDAD4, A.FECHA
 FROM analisis A
 INNER JOIN cultivo C
-ON A.IDCULTIVO = C.IDCULTIVO");
+INNER JOIN usuario U
+INNER JOIN organizacion O
+ON A.IDCULTIVO = C.IDCULTIVO
+AND A.IDUSUARIO = U.IDUSUARIO
+AND U.IDORGANIZACION = O.IDORGANIZACION
+AND O.IDORGANIZACION = '$IDORGANIZACION'");
 			$stm->execute();
 
 			return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -51,9 +58,10 @@ ON A.IDCULTIVO = C.IDCULTIVO");
 	{
 		try
 		{
+			$IDORGANIZACION = $_SESSION['idorganizacion'];
 			$result = array();
 
-			$stm = $this->pdo->prepare("SELECT * FROM cultivo");
+			$stm = $this->pdo->prepare("SELECT C.IDCULTIVO, C.NOMBRE FROM cultivo C INNER JOIN usuario U INNER JOIN organizacion O WHERE C.IDUSUARIO = U.IDUSUARIO AND U.IDORGANIZACION = O.IDORGANIZACION AND O.IDORGANIZACION = '1'");
 			$stm->execute();
 
 			return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -125,8 +133,8 @@ ON A.IDCULTIVO = C.IDCULTIVO");
 	{
 		try 
 		{
-		$sql = "INSERT INTO analisis (IDCULTIVO,PROPIEDAD1,PROPIEDAD2,PROPIEDAD3,PROPIEDAD4) 
-		        VALUES (?, ?,?,?,?)";
+		$sql = "INSERT INTO analisis (IDCULTIVO,PROPIEDAD1,PROPIEDAD2,PROPIEDAD3,PROPIEDAD4, IDUSUARIO) 
+		        VALUES (?,?,?,?,?,?)";
 
 		$this->pdo->prepare($sql)
 		     ->execute(
@@ -135,7 +143,8 @@ ON A.IDCULTIVO = C.IDCULTIVO");
 					$data->PROPIEDAD1,
 					$data->PROPIEDAD2,
 					$data->PROPIEDAD3,
-					$data->PROPIEDAD4
+					$data->PROPIEDAD4,
+					$data->IDUSUARIO,
                 )
 			);
 		} catch (Exception $e) 

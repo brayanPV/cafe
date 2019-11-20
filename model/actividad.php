@@ -30,9 +30,9 @@ class Actividad
             $result = array();
 
 			$stm = $this->pdo->prepare("SELECT a.IDACTIVIDAD, a.NOMBRE FROM actividad a
-            INNER JOIN USUARIO U
-            INNER JOIN ORGANIZACION O
-            WHERE A.IDUSUARIO = U.IDUSUARIO
+            INNER JOIN usuario U
+            INNER JOIN organizacion O
+            WHERE a.IDUSUARIO = U.IDUSUARIO
             AND U.IDORGANIZACION = O.IDORGANIZACION
             AND O.IDORGANIZACION = '$IDORGANIZACION'");
 			$stm->execute();
@@ -100,7 +100,7 @@ class Actividad
 	{
 		try 
 		{
-		$sql = "INSERT INTO actividad (nombre,IDUSUARIO) 
+		$sql = "INSERT INTO actividad (nombre,idusuario) 
 		        VALUES (?,?)";
 
 		$this->pdo->prepare($sql)

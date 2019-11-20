@@ -18,7 +18,6 @@
 							<th>Nombre</th>
 							<th>Apellido</th>
 							<th>Nombre usuario</th>
-							<th>Contraseña</th>
 							<th>editar</th>
 							<th>eliminar</th>
 						</tr>
@@ -29,7 +28,6 @@
 							<th>Nombre</th>
 							<th>Apellido</th>
 							<th>Nombre usuario</th>
-							<th>Contraseña</th>
 							<th>editar</th>
 							<th>eliminar</th>
 						</tr>
@@ -41,7 +39,6 @@
 							<td><?php echo $r->NOMBRE; ?></td>
 							<td><?php echo $r->APELLIDO; ?></td>
 							<td><?php echo $r->NOMUSUARIO; ?></td>
-							<td><?php echo $r->PASSWORD; ?></td>
 							<td> <a href="?c=Usuario&a=Editar&ID=<?php echo $r->IDUSUARIO; ?>">Editar</a></td>
 							<td><a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?c=Usuario&a=Eliminar&id=<?php echo $r->id; ?>">Eliminar</a></td>
 						</tr>

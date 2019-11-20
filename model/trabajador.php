@@ -33,9 +33,9 @@ class Trabajador
 			$result = array();
 
 			$stm = $this->pdo->prepare("SELECT T.IDTRABAJADOR, T.NOMBRE,T.APELLIDO,T.TELEFONO FROM trabajador T
-            INNER JOIN USUARIO U
+            INNER JOIN usuario U
             ON T.IDUSUARIO = U.IDUSUARIO
-            INNER JOIN ORGANIZACION O
+            INNER JOIN organizacion O
             ON U.IDORGANIZACION =O.IDORGANIZACION
             AND O.IDORGANIZACION = '$IDORGANIZACION'");
 			$stm->execute();
