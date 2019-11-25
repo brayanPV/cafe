@@ -38,6 +38,7 @@
 					<div class="form-group">
 						<label for="textInput">Area cultivo</label>
 						<input type="number" id="textInput" class="form-control mb-4" placeholder="Ingrese area del cultivo" min="1" max="1000" name="area" value="<?php echo $alm->AREA; ?>" required>
+						<input type="hidden" name="idusuario" value="<?php echo $_SESSION['idusuario'] ?>" />
 					</div>
 				</div>
 
