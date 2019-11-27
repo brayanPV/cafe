@@ -17,7 +17,8 @@
 							<th>ID</th>
 							<th>Nombre</th>
 							<th>Apellido</th>
-							<th>Telefono</th>	
+							<th>Telefono</th>
+							<th>Cedula</th>	
 							<th>editar</th>	
 						</tr>
 					</thead>
@@ -26,7 +27,8 @@
 							<th>ID</th>
 							<th>Nombre</th>
 							<th>Apellido</th>
-							<th>Telefono</th>	
+							<th>Telefono</th>
+							<th>Cedula</th>	
 							<th>editar</th>	
 						</tr>
 					</tfoot>
@@ -36,7 +38,8 @@
 							<td><?php echo $r->IDTRABAJADOR; ?></td>
 							<td><?php echo $r->NOMBRE; ?></td>	
 							<td><?php echo $r->APELLIDO; ?></td>
-							<td><?php echo $r->TELEFONO; ?></td>								
+							<td><?php echo $r->TELEFONO; ?></td>
+							<td><?php echo $r->CEDULA; ?></td>								
 							<td> <a href="?c=Trabajador&a=Editar&ID=<?php echo $r->IDTRABAJADOR; ?>">Editar</a></td>
 							
 						</tr>

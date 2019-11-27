@@ -1,105 +1,87 @@
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-	<!-- Content Header (Page header) -->
-	<section class="content-header">
-		<h1>
-			Cafe
-			<small>Mostrar </small>
-		</h1>
-		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-			<li class="active">Here</li>
-		</ol>
-	</section>
+<!-- Begin Page Content -->
+<div class="container-fluid">
 
-	<!-- Main content -->
-	<section class="content container-fluid">
+	<!-- Page Heading -->
+	<h1 class="h3 mb-4 text-gray-800">Edite un Control de Calidad</h1>
 
-		<!--------------------------
-        | Your Page Content Here |
-        -------------------------->
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">Formulario Edicion Control calidad</h6>
+				</div>
+				<form role="form" id="frm-cultivo" action="?c=ControlCalidad&a=Guardar" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="ID" value="<?php echo $alm->IDCONTROLCALIDAD; ?>" />
+					<div class="card-body">
 
-		<!-- /.box-header -->
-		<!-- form start -->
+						<div class="form-group">
+							<label>Nombre del control de calidad</label>
+							<input class="form-control" type="text" placeholder="ingrese el nombre del control de calidad" name="nombre" value="<?php echo $alm->NOMBRE; ?>">
+						</div>
+						<div class="form-group">
+							<label>Seleccione el Tipo de control de calidad</label>
+							<select name="tipo" id="" class="form-control">
+								<?php foreach($this->model->Listar1() as $r): ?>
+								<option value="<?php echo $r->IDTIPOC; ?>"><?php echo $r->IDTIPOC; ?> ||<?php echo $r->TIPO; ?></option>
+								<?php endforeach; ?>
+							</select>
+						</div>
 
-		<!-- /.box-body -->
-
-		<div class="box box-primary">
-			<div class="box-header with-border">
-				<h3 class="box-title">Crear Control de Calidad</h3>
-			</div>
-			<!-- /.box-header -->
-			<!-- form start -->
-			<form role="form" id="frm-cultivo" action="?c=ControlCalidad&a=Guardar" method="post" enctype="multipart/form-data">
-				<input type="hidden" name="ID" value="<?php echo $alm->IDCONTROLCALIDAD; ?>" />
-				<div class="box-body">
-					<div class="form-group">
-						<label for="textInput">Nombre del Control de calidad</label>
-						<input type="text" name="nombre" id="textInput" class="form-control mb-4" placeholder="Ingrese nombre"    required value="<?php echo $alm->NOMBRE; ?>">
 					</div>
-					<div class="form-group">
-                  <label>Slelccione el tipo de control de calidad</label>
-                  <select class="form-control" name="tipo">
-                   <?php foreach($this->model->Listar1() as $r): ?>
-					  <option value="<?php echo $r->IDTIPOC; ?>"><?php echo $r->IDTIPOC; ?> ||<?php echo $r->TIPO; ?></option>
-                    <?php endforeach; ?>
-                    
-                  </select>
-                </div>
-				</div>
-				<!-- /.box-body -->
+					<div class="card-footer">
+						<button type="submit" class="btn btn-primary" onclick="showAlert()">Crear control de calidad</button>
+					</div>
 
-				<div class="box-footer">
-					<button type="submit" class="btn btn-primary"  onclick="showAlert()">Actualizar</button>
-				</div>
-			</form>
-		</div>
-		<div class="box">
-			<div class="box-header">
-				<h3 class="box-title">Tabla de todos los controles de calidad</h3>
+
+				</form>
 			</div>
-			<!-- /.box-header -->
-			<div class="box-body">
-				<table id="example1" class="table table-bordered table-striped">
-					<thead>
-						<tr>
-							<th>ID Control calidad</th>
-							<th>Nombre</th>
-							<th>Tipo</th>
-							
-							<th>editar</th>
-							<th>eliminar</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php foreach($this->model->Listar() as $r): ?>
-						<tr>
-							<td><?php echo $r->IDCONTROLCALIDAD; ?></td>
-							<td><?php echo $r->NOMBRE; ?></td>
-							<td><?php echo $r->TIPO; ?></td>
-							<td> <a href="?c=ControlCalidad&a=Editar&ID=<?php echo $r->IDCONTROLCALIDAD; ?>">Editar</a></td>
-							<td><a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?c=ControlCalidad&a=Eliminar&id=<?php echo $r->IDCONTROLCALIDAD; ?>">Eliminar</a></td>
-						</tr>
-						<?php endforeach; ?>
-					</tbody>
-					<tfoot>
-						<tr>
-							<th>ID CONTROL CALIDAD</th>
-							<th>Nombre</th>
-							<th>tipo</th>
-							<th>editar</th>
-							<th>eliminar</th>
-						</tr>
-					</tfoot>
-				</table>
-			</div>
-
-			
-			<!-- /.box-body -->
 		</div>
+	</div>
 
-	</section>
-	<!-- /.content -->
+	<div class="row">
+		<div class="col-lg-12">
+			<!-- DataTales Example -->
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">Tabla de todos los controles de calidad</h6>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+							<thead>
+								<tr>
+									<th>ID CONTROL CALIDAD</th>
+									<th>Nombre</th>
+									<th>Tipo</th>
+									<th>editar</th>
+								</tr>
+							</thead>
+							<tfoot>
+								<tr>
+									<th>ID CONTROL CALIDAD</th>
+									<th>Nombre</th>
+									<th>Tipo</th>
+									<th>editar</th>
+								</tr>
+							</tfoot>
+							<tbody>
+								<?php foreach($this->model->Listar() as $r): ?>
+								<tr>
+									<td><?php echo $r->IDCONTROLCALIDAD; ?></td>
+									<td><?php echo $r->NOMBRE; ?></td>
+									<td><?php echo $r->TIPO; ?></td>
+									<td> <a href="?c=ControlCalidad&a=Editar&ID=<?php echo $r->IDCONTROLCALIDAD; ?>">Editar</a></td>
+
+								</tr>
+								<?php endforeach; ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 </div>
-<!-- /.content-wrapper -->
+<!-- /.container-fluid -->

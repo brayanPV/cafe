@@ -32,7 +32,7 @@ class Trabajador
             $IDORGANIZACION = $_SESSION['idorganizacion'];
 			$result = array();
 
-			$stm = $this->pdo->prepare("SELECT T.IDTRABAJADOR, T.NOMBRE,T.APELLIDO,T.TELEFONO FROM trabajador T
+			$stm = $this->pdo->prepare("SELECT T.IDTRABAJADOR, T.NOMBRE,T.APELLIDO,T.TELEFONO, T.CEDULA FROM trabajador T
             INNER JOIN usuario U
             ON T.IDUSUARIO = U.IDUSUARIO
             INNER JOIN organizacion O

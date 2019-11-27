@@ -1,105 +1,96 @@
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-	<!-- Content Header (Page header) -->
-	<section class="content-header">
-		<h1>
-			Cafe
-			<small>Mostrar </small>
-		</h1>
-		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-			<li class="active">Here</li>
-		</ol>
-	</section>
+<!-- Begin Page Content -->
+<div class="container-fluid">
 
-	<!-- Main content -->
-	<section class="content container-fluid">
+	<!-- Page Heading -->
+	<h1 class="h3 mb-4 text-gray-800">Editar Trabajdor</h1>
 
-		<!--------------------------
-        | Your Page Content Here |
-        -------------------------->
-
-		<!-- /.box-header -->
-		<!-- form start -->
-
-		<!-- /.box-body -->
-
-		<div class="box">
-			<div class="box-header">
-				<h3 class="box-title">Editar trabajdor</h3>
-			</div>
-			<form role="form" id="frm-zona" action="?c=Trabajador&a=Guardar" method="post" enctype="multipart/form-data">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">Formulario Edicion Trabajador</h6>
+				</div>
+				<form role="form" id="frm-zona" action="?c=Trabajador&a=Guardar" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="ID" value="<?php echo $alm->IDTRABAJADOR; ?>" />
-				<div class="box-body">
-					<div class="form-group">
-						<label for="textInput">Nombre del trabajador</label>
-						<input type="text" name="nombre" id="textInput" class="form-control mb-4" placeholder="Ingrese nombre"    required  value="<?php echo $alm->NOMBRE; ?>">
-					</div>
-					<div class="form-group">
-						<label for="textInput">apellido del trabajador</label>
-						<input type="text" name="apellido" id="textInput" class="form-control mb-4" placeholder="Ingrese apellido"    required value="<?php echo $alm->APELLIDO; ?>">
-					</div>
-					<div class="form-group">
-						<label for="textInput">telefono del trabajador</label>
-						<input type="number" name="telefono" id="textInput" class="form-control mb-4" placeholder="Ingrese telefono"    required  value="<?php echo $alm->TELEFONO; ?>">
-					</div>
-				</div>
-				<!-- /.box-body -->
+					<div class="card-body">
 
-				<div class="box-footer">
-					<button type="submit" class="btn btn-primary"  onclick="showAlert()">actualizar trabajador</button>
-				</div>
-			</form>
-		</div>
-		
-		<div class="box">
-			<div class="box-header">
-				<h3 class="box-title">Tabla de todos los trabajadores</h3>
+						<div class="form-group">
+							<label>Nombre del trabajador</label>
+							<input class="form-control" type="text" placeholder="ingrese el nombre " required name="nombre" value="<?php echo $alm->NOMBRE; ?>">
+						</div>
+						<div class="form-group">
+							<label>apellido del trabajador</label>
+							<input class="form-control" type="text" placeholder="ingrese el apellido " required name="apellido" value="<?php echo $alm->APELLIDO; ?>">
+						</div>
+						<div class="form-group">
+							<label>telefono del trabajador</label>
+							<input class="form-control" type="tel" placeholder="ingrese el celular" pattern="[0-9]{10}" required name="telefono" required  value="<?php echo $alm->TELEFONO; ?>">
+						</div>
+						<div class="form-group">
+							<label>cedula del trabajador</label>
+							<input class="form-control" type="number" placeholder="ingrese cedula"  required name="cedula" required  value="<?php echo $alm->CEDULA; ?>">
+						</div>
+						
+					</div>
+					<div class="card-footer">
+						<button type="submit" class="btn btn-primary" onclick="showAlert()">Editar Trabajador</button></div>
+
+
+				</form>
 			</div>
-			<!-- /.box-header -->
-			<div class="box-body">
-				<table id="example1" class="table table-bordered table-striped">
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-lg-12">
+			<!-- DataTales Example -->
+	<div class="card shadow mb-4">
+		<div class="card-header py-3">
+			<h6 class="m-0 font-weight-bold text-primary">Tabla de todos los trabajadores</h6>
+		</div>
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>Nombre</th>	
+							<th>Nombre</th>
 							<th>Apellido</th>
 							<th>Telefono</th>
-							<th>editar</th>
-							<th>eliminar</th>						
+							<th>Cedula</th>	
+							<th>editar</th>	
 						</tr>
 					</thead>
-					<tbody>
-						<?php foreach($this->model->Listar() as $r): ?>
-						<tr>
-							<td><?php echo $r->IDTRABAJADOR; ?></td>
-							<td><?php echo $r->NOMBRE; ?></td>	
-							<td><?php echo $r->APELLIDO; ?></td>	
-							<td><?php echo $r->TELEFONO; ?></td>							
-							<td> <a href="?c=Trabajador&a=Editar&ID=<?php echo $r->IDTRABAJADOR; ?>">Editar</a></td>
-							<td><a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?c=Trabajador&a=Eliminar&id=<?php echo $r->IDTRABAJADOR; ?>">Eliminar</a></td>
-						</tr>
-						<?php endforeach; ?>
-					</tbody>
 					<tfoot>
 						<tr>
 							<th>ID</th>
 							<th>Nombre</th>
 							<th>Apellido</th>
-							<th>Telefono</th>							
-							<th>editar</th>
-							<th>eliminar</th>
+							<th>Telefono</th>
+							<th>Cedula</th>	
+							<th>editar</th>	
 						</tr>
 					</tfoot>
+					<tbody>
+						<?php foreach($this->model->Listar() as $r): ?>
+						<tr>
+							<td><?php echo $r->IDTRABAJADOR; ?></td>
+							<td><?php echo $r->NOMBRE; ?></td>	
+							<td><?php echo $r->APELLIDO; ?></td>
+							<td><?php echo $r->TELEFONO; ?></td>
+							<td><?php echo $r->CEDULA; ?></td>								
+							<td> <a href="?c=Trabajador&a=Editar&ID=<?php echo $r->IDTRABAJADOR; ?>">Editar</a></td>
+							
+						</tr>
+						<?php endforeach; ?>
+					</tbody>
 				</table>
 			</div>
-
-			
-			<!-- /.box-body -->
 		</div>
+	</div>
+		</div>
+	</div>
 
-	</section>
-	<!-- /.content -->
 
 </div>
-<!-- /.content-wrapper -->
+<!-- /.container-fluid -->
