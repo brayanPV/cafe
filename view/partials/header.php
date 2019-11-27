@@ -154,11 +154,11 @@ session_start();
 			
 			<!-- Nav Item - Calidad Collapse Menu -->
 			<li class="nav-item">
-				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePersonal" aria-expanded="true" aria-controls="collapsePersonal">
+				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSilos" aria-expanded="true" aria-controls="collapsePersonal">
 					<i class="fas fa-users"></i>
 					<span>Silos</span>
 				</a>
-				<div id="collapsePersonal" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+				<div id="collapseSilos" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" href="?c=Silo&a=Crud">Agregar Silos</a>
 						<a class="collapse-item" href="?c=Silo&a=Ver">Ver Silos</a>
