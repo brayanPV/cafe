@@ -17,6 +17,7 @@
 							<th>ID Silo</th>
 							<th>Cantidad</th>
 							<th>ID Cultivo</th>
+							<th>Nombre cultvo</th>
 							<th>ID trabajador</th>
 							<th>Fecha</th>
 						</tr>
@@ -26,6 +27,7 @@
 							<th>ID Silo</th>
 							<th>Cantidad</th>
 							<th>ID Cultivo</th>
+							<th>Nombre cultvo</th>
 							<th>ID trabajador</th>
 							<th>Fecha</th>
 						</tr>
@@ -33,11 +35,12 @@
 					<tbody>
 						<?php foreach($this->model->Listar() as $r): ?>
 						<tr>
-							<td><?php echo $r->IDSILO; ?></td>
-							<td><?php echo $r->CANTIDAD; ?></td>
-							<td><?php echo $r->IDCULTIVO; ?></td>
-							<td><?php echo $r->IDTRABAJADOR; ?></td>
-							<td><?php echo $r->FECHA; ?></td>
+							<td><?php echo $r->idsilo; ?></td>
+							<td><?php echo $r->cantidad; ?></td>
+							<td><?php echo $r->idcultivo; ?></td>
+							<td><?php echo $r->nombre; ?></td>
+							<td><?php echo $r->idtrabajador; ?></td>
+							<td><?php echo $r->fecha; ?></td>
 
 						</tr>
 						<?php endforeach; ?>

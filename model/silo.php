@@ -18,9 +18,11 @@ class Silo{
         try{
             $IDORGANIZACION = $_SESSION['idorganizacion'];
             $result = array();
-            $stm = $this->pdo->prepare("select s.idsilo, c.nombre, t.nombre, u.nombre from silo s
+            $stm = $this->pdo->prepare("select s.idsilo, s.cantidad, c.idcultivo, c.nombre,t.idtrabajador, s.fecha from silo s
+            inner join cultivoact ca
+            on s.idcultivoact = ca.idcultivoact
             inner join cultivo c
-            on s.idcutivo = c.idcultivo
+            on ca.idcultivo = c.idcultivo
             inner join trabajador t
             on s.idtrabajador = t.idtrabajador
             inner join usuario u
@@ -39,7 +41,7 @@ class Silo{
         try{
             $IDORGANIZACION = $_SESSION['idorganizacion'];
             $result = array();
-            $stm= $this->pdo->prepare("SELECT ca.IDCULTIVOACT, ca.IDCULTIVO
+            $stm= $this->pdo->prepare("SELECT ca.idcultivoact, c.idcultivo, c.idnombre
             from cultivoact ca
             inner join cultivo c
             on ca.idcultivo = c.idcultivo

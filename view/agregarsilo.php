@@ -22,7 +22,7 @@
 											<label>Seleccionar Cultivo Cosechado</label>
 											<select class="form-control" name="idcultivoact">
 											<?php foreach($this->model->Listar1() as $r): ?>
-								<option value="<?php echo $r->IDCULTIVOACT; ?>"> <?php echo $r->IDCULTIVOACT; ?>||<?php echo $r->IDCULTIVO; ?>||<?php echo $r->NOMBRE; ?></option>
+								<option value="<?php echo $r->idcultivoact; ?>"> <?php echo $r->idcultivoact; ?>||<?php echo $r->idcultivo; ?>||<?php echo $r->nombre; ?></option>
 								<?php endforeach; ?>
 											</select>
 										</div>

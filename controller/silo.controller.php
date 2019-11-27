@@ -14,7 +14,7 @@ class SiloController{
         require_once 'view/partials/footer.php';  
     }
     
-    public function crud(){
+    public function Crud(){
         $alm = new Silo();
         
         if(isset($_REQUEST['ID'])){
@@ -28,7 +28,7 @@ class SiloController{
     
     public function Ver(){
         require_once 'view/partials/header.php';
-        require_once 'view/versilo.php';
+        require_once 'view/versilos.php';
         require_once 'view/partials/footer.php';   
     }
     
