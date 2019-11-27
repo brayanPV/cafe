@@ -150,6 +150,24 @@ session_start();
 
 			<!-- Divider -->
 			<hr class="sidebar-divider">
+			
+			<!-- Nav Item - Calidad Collapse Menu -->
+			<li class="nav-item">
+				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePersonal" aria-expanded="true" aria-controls="collapsePersonal">
+					<i class="fas fa-users"></i>
+					<span>Silos</span>
+				</a>
+				<div id="collapsePersonal" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" href=#>Agregar Silos</a>
+						<a class="collapse-item" href=#>Ver Silos</a>
+						
+					</div>
+				</div>
+			</li>
+			
+			<!-- Divider -->
+			<hr class="sidebar-divider">
 
 			<!-- Sidebar Toggler (Sidebar) -->
 			<div class="text-center d-none d-md-inline">
