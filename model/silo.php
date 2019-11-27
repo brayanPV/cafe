@@ -41,7 +41,7 @@ class Silo{
         try{
             $IDORGANIZACION = $_SESSION['idorganizacion'];
             $result = array();
-            $stm= $this->pdo->prepare("SELECT ca.idcultivoact, c.idcultivo, c.idnombre
+            $stm= $this->pdo->prepare("SELECT ca.idcultivoact, ca.idcultivo, c.nombre
             from cultivoact ca
             inner join cultivo c
             on ca.idcultivo = c.idcultivo
