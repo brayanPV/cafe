@@ -2,7 +2,7 @@
 if(!isset($_SESSION))
 {
 session_start();
-}  
+}
   $_SESSION["admin"];
 ?>
 
@@ -18,6 +18,7 @@ session_start();
 	<meta name="author" content="">
 
 	<title>C0FFee</title>
+	<link rel="icon" href="../images/ico_cafe.png">
 
 	<!-- Custom fonts for this template-->
 	<link href="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -38,7 +39,7 @@ session_start();
 		<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 			<!-- Sidebar - Brand -->
-			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-coffee"></i>
 				</div>
@@ -328,7 +329,7 @@ session_start();
 									Activity Log
 								</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="logout.php" data-toggle="modal" data-target="#logoutModal">
+								<a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
 									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 									Logout
 								</a>
