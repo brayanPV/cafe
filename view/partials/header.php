@@ -160,8 +160,8 @@ session_start();
 				</a>
 				<div id="collapsePersonal" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href=#>Agregar Silos</a>
-						<a class="collapse-item" href=#>Ver Silos</a>
+						<a class="collapse-item" href="?c=Silo&a=Crud">Agregar Silos</a>
+						<a class="collapse-item" href="?c=Silo&a=Ver">Ver Silos</a>
 						
 					</div>
 				</div>

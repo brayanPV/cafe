@@ -103,8 +103,8 @@ class Cultivo
 	{
 		try 
 		{
-		$sql = "INSERT INTO cultivo (nombre,area, idusuario) 
-		        VALUES (?, ?, ?)";
+		$sql = "INSERT INTO cultivo (nombre,area, idusuario, estado) 
+		        VALUES (?, ?, ?, 1)";
 
 		$this->pdo->prepare($sql)
 		     ->execute(

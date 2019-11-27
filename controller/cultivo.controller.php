@@ -51,7 +51,7 @@ class CultivoController{
     public function Guardar(){
         $alm = new Cultivo();
         
-        $alm->ID = $_REQUEST['ID'];
+        $alm->ID = $_REQUEST['id'];
         $alm->nombre = $_REQUEST['nombre'];
         $alm->area = $_REQUEST['area'];
         $alm->idusuario = $_REQUEST['idusuario'];

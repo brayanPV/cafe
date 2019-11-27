@@ -20,18 +20,18 @@
 										</div>
 										<div class="form-group">
 											<label>Seleccionar Cultivo Cosechado</label>
-											<select class="form-control" name="">
-											<option value=""> opcion 1 </option>
-											<option value=""> opcion 2 </option>
-											<option value=""> opcion 3 </option>
+											<select class="form-control" name="idcultivoact">
+											<?php foreach($this->model->Listar1() as $r): ?>
+								<option value="<?php echo $r->IDCULTIVOACT; ?>"> <?php echo $r->IDCULTIVOACT; ?>||<?php echo $r->IDCULTIVO; ?>||<?php echo $r->NOMBRE; ?></option>
+								<?php endforeach; ?>
 											</select>
 										</div>
 										<div class="form-group">
 											<label>Seleccionar Trabajador</label>
-											<select class="form-control" name="">
-											<option value=""> opcion 1 </option>
-											<option value=""> opcion 2 </option>
-											<option value=""> opcion 3 </option>
+											<select class="form-control" name="idtrabajador">
+											<?php foreach($this->model->Listar2() as $r): ?>
+								<option value="<?php echo $r->IDTRABAJADOR; ?>"><?php echo $r->IDTRABAJADOR; ?> || <?php echo $r->NOMBRE; ?></option>
+								<?php endforeach; ?>
 											</select>
 										</div>									
 										<div>
