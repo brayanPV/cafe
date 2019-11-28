@@ -3,101 +3,105 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-  <title>Registar usuario</title>
+	<title>Registar usuario</title>
 
-  <!-- Custom fonts for this template-->
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+	<!-- Custom fonts for this template-->
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <link rel="icon" href="../images/ico_cafe.png">
-  <!-- Custom styles for this template-->
-  <link href="view/css/styleLogin.css" rel="stylesheet">
-  <!-- -->
-    <link rel="stylesheet" href="view/css/header.css" type="text/css" media="all" />
+	<link rel="icon" href="../images/ico_cafe.png">
+	<!-- Custom styles for this template-->
+	<link href="view/css/styleLogin.css" rel="stylesheet">
+	<!-- -->
+	<link rel="stylesheet" href="view/css/header.css" type="text/css" media="all" />
 </head>
 
 <body class="bg-gradient-primary">
 
-<!-- header -->
-        <header class="header">
-            <div class="container-fluid px-lg-5">
-                <!-- nav -->
-                <nav class="py-4">
-                    <div id="logo">
-                        <h1> <a href="index.html">C0FFee</a></h1>
-                    </div>
+	<!-- header -->
+	<header class="header">
+		<div class="container-fluid px-lg-5">
+			<!-- nav -->
+			<nav class="py-4">
+				<div id="logo">
+					<h1> <a href="index.html">C0FFee</a></h1>
+				</div>
 
-                    <label for="drop" class="toggle">Menu</label>
-                    <input type="checkbox" id="drop" />
-                    <ul class="menu mt-2">
-                        <li class="active"><a href="index.html">Inicio</a></li>
-                    </ul>
-                </nav>
-                <!-- //nav -->
-            </div>
-        </header>
-        <!-- //header -->
-  
+				<label for="drop" class="toggle">Menu</label>
+				<input type="checkbox" id="drop" />
+				<ul class="menu mt-2">
+					<li class="active"><a href="index.html">Inicio</a></li>
+				</ul>
+			</nav>
+			<!-- //nav -->
+		</div>
+	</header>
+	<!-- //header -->
 
-  <div class="container">
 
-    <div class="card o-hidden border-0 shadow-lg my-5">
-      <div class="card-body p-0">
-        <!-- Nested Row within Card Body -->
-        <div class="row">
-          <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-          <div class="col-lg-7">
-            <div class="p-5">
-              <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Crear una cuenta</h1>
-              </div>
-              <form action="validarLogin.php" method="post" class="user">
-                <input type="hidden" name="action" value="register"/>
-                <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Nombres">
-                  </div>
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Apellidos">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <input type="user" class="form-control form-control-user" id="exampleInputEmail" placeholder="Usuario">
-                </div>
-                <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Contraseña">
-                  </div>
-                  <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repetir Contraseña">
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-primary btn-user btn-block">
-                  Registrar cuenta
-                </button>
-              </form>
-              <hr>
-              <div class="text-center">
-                <a class="small" href="login.html">Ya tiene una cuenta? inicie sesion!</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+	<div class="container">
 
-  </div>
+		<div class="card o-hidden border-0 shadow-lg my-5">
+			<div class="card-body p-0">
+				<!-- Nested Row within Card Body -->
+				<div class="row">
+					<div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+					<div class="col-lg-7">
+						<div class="p-5">
+							<div class="text-center">
+								<h1 class="h4 text-gray-900 mb-4">Registre su organizacion</h1>
+							</div>
+							<form action="registrar.php" method="post" class="user">
+								<input type="hidden" name="action" value="register" />
+								<div class="form-group row">
+									<div class="col-sm-6 mb-3 mb-sm-0">
+										<input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Nombre Organizacion" name="nombre" required>
+									</div>
+									<div class="col-sm-6">
+										<input type="user" class="form-control form-control-user" id="exampleLastName" placeholder="Usuario" name="nomusuario" required onkeypress="return AvoidSpace(event)">
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-sm-12 mb-3 mb-sm-0">
+										<input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Contraseña" required name="password" >
+									</div>									
+								</div>
+								<button type="submit" class="btn btn-primary btn-user btn-block" id="submit">
+									Registrar organizacion
+								</button>
+							</form>
+							<hr>
+							<div class="text-center">
+								<a class="small" href="login.html">Ya tiene una cuenta? inicie sesion!</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-<!-- Bootstrap core JavaScript-->
-  <script src="view/js/jquery/jquery.min.js"></script>
+	</div>
 
-  <!-- Custom scripts for all pages-->
-  <script src="view/js/sb-admin-2.min.js"></script>
+	<!-- Bootstrap core JavaScript-->
+	<script src="view/js/jquery/jquery.min.js"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script src="view/js/sb-admin-2.min.js"></script>
+	<script type="text/javascript">
+		function AvoidSpace(event) {
+			var k = event ? event.which : window.event.keyCode;
+			if (k == 32) return false;
+		}
+
+	</script>
+
+	
+
 
 </body>
 
