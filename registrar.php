@@ -23,10 +23,17 @@ try{
     // Execute the prepared statement
     $stmt->execute();
     //echo "Records inserted successfully.";
+    header('Location: login.html');
+    
 } catch(PDOException $e){
     die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+    header('Location: register.html');
+    
+
 }
  
 // Close connection
 unset($pdo);
+
+
 ?>
